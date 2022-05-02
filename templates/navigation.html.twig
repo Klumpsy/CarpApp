@@ -1,0 +1,22 @@
+<nav class="grid-x grid-padding-y grid-padding-x align-middle navigation-background">
+    <div class="cell shrink">
+        <a href="{{ path('app_home') }}"><img class="website-logo-navigation" src="{{ asset('build/images/CArPP_logo.png') }}" alt="logo cArPP website"/></a>
+    </div>
+    <div class="cell auto">
+        <ul class="menu align-right">
+            <li><a href="#">Wateren</a></li>
+            <li><a href="#">Karpers</a></li>
+            <li><a href="#">Foto's</a></li>
+        </ul>
+    </div>
+    {% if not is_granted('ROLE_USER') %}
+        <div class="cell shrink align-right">
+            <a href="{{ path('app_login') }}" class="button success">Login</a>
+        </div>
+    {%  endif %}
+    {% if is_granted('ROLE_USER') %}
+        <div class="cell shrink align-right">
+            <a href="{{ path('app_logout') }}" class="button warning">Logout</a>
+        </div>
+    {%  endif %}
+</nav>

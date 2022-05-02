@@ -4,6 +4,8 @@
         "@symfony/stimulus-bridge": "^3.0.0",
         "@symfony/webpack-encore": "^1.7.0",
         "core-js": "^3.0.0",
+        "file-loader": "^6.0.0",
+        "prettier": "^2.6.2",
         "regenerator-runtime": "^0.13.2",
         "sass": "^1.51.0",
         "sass-loader": "^12.0.0",
@@ -18,6 +20,6 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "foundation": "^4.2.1-1"
+        "foundation-sites": "^6.7.4"
     }
 }
