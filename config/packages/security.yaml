@@ -37,7 +37,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/wateren, roles: ROLE_USER }
         - { path: ^/karpers, roles: ROLE_USER }
-        - { path: ^/fotos, roles: ROLE_USER }
+        - { path: ^/vangsten, roles: ROLE_USER }
 
 when@test:
     security:

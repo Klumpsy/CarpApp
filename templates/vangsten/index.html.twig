@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VangstenController!{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('vangst_message') %}
+        <h2>{{ message }}</h2>
+    {% endfor %}
+<div class="grid-x grid-padding-x grid-padding-y">
+    <div class="cell">
+        <a class="button float-right mainGreenBackground " href="{{ path('app_vangst_toevoegen') }}">Voeg vangst toe</a>
+    </div>
+</div>
+{% endblock %}

@@ -4,14 +4,14 @@
     </div>
     <div class="cell auto">
         <ul class="menu align-right">
-            <li><a href="#">Wateren</a></li>
-            <li><a href="#">Karpers</a></li>
-            <li><a href="#">Foto's</a></li>
+            <li><a class="mainGreenColor" href="{{ path('app_wateren') }}">Wateren</a></li>
+            <li><a class="mainGreenColor" href="#">Karpers</a></li>
+            <li><a class="mainGreenColor" href="{{ path('app_vangsten') }}">Vangsten</a></li>
         </ul>
     </div>
     {% if not is_granted('ROLE_USER') %}
         <div class="cell shrink align-right">
-            <a href="{{ path('app_login') }}" class="button success">Login</a>
+            <a href="{{ path('app_login') }}" class="button mainGreenBackground">Login</a>
         </div>
     {%  endif %}
     {% if is_granted('ROLE_USER') %}

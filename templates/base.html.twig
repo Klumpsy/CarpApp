@@ -15,11 +15,11 @@
     </head>
     <body style="background-image: url('{{ asset('/build/images/carpp_background.jpg')}}')">
         <div class="grid-container" >
-            <div class="grid-y" style="height: 100vh">
+            <div class="grid-y" style="min-height: 100vh">
                 <div class="cell shrink">
                     {% include "navigation.html.twig" %}
                 </div>
-                <div class="cell auto">
+                <div class="cell auto" style="background-color: rgba(23, 37, 22, 0.52)">
                     {% block body %}{% endblock %}
                 </div>
                 <div class="cell shrink">
