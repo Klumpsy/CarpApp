@@ -26,7 +26,7 @@ class Vangst
     #[ORM\Column(type: 'integer')]
     private $diepte;
 
-    #[ORM\Column(type: 'blob', nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
 
     #[ORM\ManyToOne(targetEntity: Land::class, inversedBy: 'land')]
@@ -35,9 +35,6 @@ class Vangst
 
     #[ORM\Column(type: 'date')]
     private $datum;
-
-    #[ORM\Column(type: 'time')]
-    private $time;
 
     #[ORM\Column(type: 'time')]
     private $tijd;
@@ -95,12 +92,12 @@ class Vangst
         return $this;
     }
 
-    public function getImage()
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage($image): self
+    public function setImage(string $image): self
     {
         $this->image = $image;
 
@@ -127,18 +124,6 @@ class Vangst
     public function setDatum(\DateTimeInterface $datum): self
     {
         $this->datum = $datum;
-
-        return $this;
-    }
-
-    public function getTime(): ?\DateTimeInterface
-    {
-        return $this->time;
-    }
-
-    public function setTime(\DateTimeInterface $time): self
-    {
-        $this->time = $time;
 
         return $this;
     }

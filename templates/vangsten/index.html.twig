@@ -4,11 +4,34 @@
 
 {% block body %}
 {% for message in app.flashes('vangst_message') %}
-        <h2>{{ message }}</h2>
-    {% endfor %}
+    <div data-closable class="callout alert-callout-subtle success">
+        <strong>Klasse!</strong> {{ message }}
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">⊗</span>
+        </button>
+    </div>
+{% endfor %}
 <div class="grid-x grid-padding-x grid-padding-y">
     <div class="cell">
         <a class="button float-right mainGreenBackground " href="{{ path('app_vangst_toevoegen') }}">Voeg vangst toe</a>
     </div>
 </div>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x grid-padding-y align-center">
+            {% for vangst in vangsten %}
+                <div class="cell small-10 medium-6 large-4">
+                    <div class="responsive-blog-post">
+                        <div class="individual-post">
+                            <h4>{{ vangst.water }}</h4>
+                            <p class="date">{{ vangst.datum|date('d-m-Y') }} - {{vangst.tijd|format_time() }} </p>
+                            <img src="{{asset('fotos/' ~ vangst.image)}}" alt={{ vangst.soort() }}>
+                            <h5>{{ vangst.gewicht }} pond</h5>
+                            <p>{{ vangst.diepte }} cm diepte - {{ vangst.soort() }}</p>
+                            <a class="button" href="#">Meer info</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

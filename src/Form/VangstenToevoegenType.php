@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class VangstenToevoegenType extends AbstractType
 {
@@ -34,7 +35,16 @@ class VangstenToevoegenType extends AbstractType
             ->add('diepte', NumberType::class, [
                 'label' => 'Diepte waarop gevangen (in cm)'
             ])
-            ->add('image', FileType::class, ['mapped' => false])
+            ->add('foto', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '10M',
+                        'maxSizeMessage' => 'Te groot bestand, maximale grootte: ({{ limit }} {{ suffix }})'
+                    ])
+                ]
+            ])
             ->add('land', EntityType::class, [
                 'class' => Land::class,
                 'label' => 'Land van vangst'

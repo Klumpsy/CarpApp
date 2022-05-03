@@ -13,10 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class VangstenController extends AbstractController
 {
     #[Route('/vangsten', name: 'app_vangsten')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
+        $em = $doctrine->getManager();
+        $vangsten = $em->getRepository(Vangst::class)->findAll();
+
         return $this->render('vangsten/index.html.twig', [
-            'controller_name' => 'VangstenController',
+            'vangsten' => $vangsten,
         ]);
     }
 
@@ -25,17 +28,19 @@ class VangstenController extends AbstractController
     {
         $vangst = new Vangst();
         $vangstForm = $this->createForm(VangstenToevoegenType::class, $vangst);
+        $vangstForm->handleRequest($request);
 
         if ($vangstForm->isSubmitted() && $vangstForm->isValid()) {
             $em = $doctrine->getManager();
-            $image = $request->files->get('vangst')['image'];
+
+            $image = $request->files->get('vangsten_toevoegen')['foto'];
 
             if ($image) {
                $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
             }
 
             $image->move(
-                $this->getParameter('images'),
+                $this->getParameter('fotos_folder'),
                 $imageName
             );
 

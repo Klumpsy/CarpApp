@@ -3,6 +3,125 @@
 @include foundation-everything();
 
 
+/* Alert messages */
+$alert-callout-subtle-border-left-width: rem-calc(5);
+$alert-callout-subtle-radius: 0.6rem;
+$alert-callout-subtle-large-font-scale: 150%;
+$alert-callout-subtle-small-font-scale: 80%;
+
+.alert-callout-subtle {
+  width: 100%;
+  background: $light-gray;
+  color: $dark-gray;
+  border: 0;
+  border-left: $alert-callout-subtle-border-left-width solid $dark-gray;
+  box-shadow: 0 5px 8px -6px rgba(0,0,0, 0.2);
+
+  &.success {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $success-color;
+  }
+
+  &.alert {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $alert-color;
+  }
+
+  &.warning {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $warning-color;
+  }
+
+  &.primary {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $primary-color;
+  }
+
+  &.small {
+
+    font-size: $alert-callout-subtle-small-font-scale;
+
+    .close-button {
+      font-size: 1.5rem;
+    }
+  }
+
+  &.large {
+    font-size: $alert-callout-subtle-large-font-scale;
+
+    .close-button {
+      font-size: 3rem;
+    }
+  }
+
+  .close-button {
+    font-size: 2rem;
+    @include vertical-center;
+  }
+
+  &.radius {
+    border-radius: $alert-callout-subtle-radius;
+  }
+}
+
+/* Vangst kaart */
+
+$responsive-blog-post-highlight: $primary-color;
+$responsive-blog-post-vert-seperate: 4rem;
+
+.responsive-blog-post {
+  margin-bottom: $responsive-blog-post-vert-seperate;
+  background-color: rgba(2,2,2,0.4);
+  padding: 20px;
+
+  p {
+    color: white;
+  }
+
+  .button {
+    padding: 0.85rem 3rem;
+    background: $responsive-blog-post-highlight;
+
+    &:hover {
+      background-color: darken($responsive-blog-post-highlight, 5%);
+      transition: color 0.3s ease-in;
+    }
+  }
+
+  .individual-post {
+    margin-bottom: $responsive-blog-post-vert-seperate;
+  }
+
+  h4 {
+    margin-bottom: 0;
+    color: white;
+    &:hover {
+      transition: color 0.3s ease-in;
+    }
+
+    @media screen and (max-width: 39.9375em) {
+      font-size: 1.5rem;
+    }
+  }
+
+  img {
+    margin-bottom: 1.5rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+    color: #8ab478;
+  }
+  h5 {
+    color: #8ab478;
+  }
+}
+
+
 
 
 

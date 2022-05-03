@@ -11,5 +11,9 @@ import "./styles/customStyles.css";
 
 import "./script";
 
+import $ from "jquery";
+require("foundation-sites");
+$(document).foundation();
+
 // start the Stimulus application
 import "./bootstrap";
