@@ -8,6 +8,22 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/regular';
 @import '../../node_modules/@fortawesome/fontawesome-free/scss/brands';
 
+@import "../../node_modules/motion-ui/motion-ui";
+
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium) {
+    .title-bar {
+      display: none;
+    }
+  }
+}
+
 /* Image slider */
 .product-image-gallery {
   background-color: rgba(23, 37, 22, 0.62);

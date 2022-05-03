@@ -1,5 +1,7 @@
 
-
+.border_bottom {
+  border-bottom: 2px solid white;
+}
 
 .navigation-background {
   background-color: #3b3b3b;
@@ -7,6 +9,10 @@
 
 .website-logo-navigation {
   max-width: 120px;
+}
+
+.website-logo-navigation-mobile {
+  max-width: 70px;
 }
 
 body {

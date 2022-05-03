@@ -1,22 +1,40 @@
-<nav class="grid-x grid-padding-y grid-padding-x align-middle navigation-background">
-    <div class="cell shrink">
-        <a href="{{ path('app_home') }}"><img class="website-logo-navigation" src="{{ asset('build/images/CArPP_logo.png') }}" alt="logo cArPP website"/></a>
+<div class="title-bar navigation-background border_bottom" data-responsive-toggle="main-nav" data-hide-for="medium">
+    <div class="title-bar-left">
+        <a href="{{ path('app_home') }}"><img class="website-logo-navigation-mobile" src="{{ asset('build/images/CArPP_logo.png') }}" alt="logo cArPP website"/></a>
     </div>
-    <div class="cell auto">
-        <ul class="menu align-right">
-            <li><a class="mainGreenColor" href="{{ path('app_home') }}">Home</a></li>
-            <li><a class="mainGreenColor" href="{{ path('app_wateren') }}">Wateren</a></li>
-            <li><a class="mainGreenColor" href="{{ path('app_vangsten') }}">Vangsten</a></li>
-        </ul>
+    <div class="title-bar-right">
+        <button class="menu-icon" type="button" data-toggle="main-nav"></button>
     </div>
-    {% if not is_granted('ROLE_USER') %}
-        <div class="cell shrink align-right">
-            <a href="{{ path('app_login') }}" class="button mainGreenBackground">Login</a>
+</div>
+
+<div class="top-bar navigation-background border_bottom" id="main-nav" data-responsive-toggle="main-nav" data-animate="hinge-in-from-top hinge-out-from-top">
+    <div class="top-bar-left hide-for-small-only">
+        <a href="{{ path('app_home') }}">
+            <img class="website-logo-navigation" src="{{ asset('build/images/CArPP_logo.png') }}" alt="logo cArPP website"/>
+        </a>
+    </div>
+    <div class="top-bar-right">
+        <div class="grid-x grid-padding-x grid-padding-y">
+            <div class="cell auto">
+                <ul class="dropdown vertical menu medium-horizontal nav">
+                    <li><a class="mainGreenColor navigation-background" href="{{ path('app_home') }}">Home</a></li>
+                    <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren') }}">Wateren</a></li>
+                    <li><a class="mainGreenColor navigation-background" href="{{ path('app_vangsten') }}">Vangsten</a></li>
+                </ul>
+            </div>
+            <div class="cell shrink">
+                {% if not is_granted('ROLE_USER') %}
+                    <div class="cell shrink align-right">
+                        <a href="{{ path('app_login') }}" class="button mainGreenBackground">Login</a>
+                    </div>
+                {%  endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <div class="cell shrink align-right">
+                        <a href="{{ path('app_logout') }}" class="button warning">Logout</a>
+                    </div>
+                {%  endif %}
+            </div>
         </div>
-    {%  endif %}
-    {% if is_granted('ROLE_USER') %}
-        <div class="cell shrink align-right">
-            <a href="{{ path('app_logout') }}" class="button warning">Logout</a>
-        </div>
-    {%  endif %}
-</nav>
+    </div>
+</div>
+
