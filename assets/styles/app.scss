@@ -2,6 +2,38 @@
 @import "../../node_modules/foundation-sites/scss/global";
 @include foundation-everything();
 
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/solid';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/regular';
+@import '../../node_modules/@fortawesome/fontawesome-free/scss/brands';
+
+/* Image slider */
+.product-image-gallery {
+  background-color: rgba(23, 37, 22, 0.62);
+  padding: 1.5rem;
+}
+
+.pdp-product-image {
+  margin-bottom: 20px;
+}
+
+.product-thumbs {
+
+  a {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0 !important;
+
+    img {
+      @include thumbnail;
+      border-radius: 3px;
+      width: 50px;
+      height: 50px;
+      border: none;
+    }
+  }
+}
 
 /* Alert messages */
 $alert-callout-subtle-border-left-width: rem-calc(5);
@@ -120,6 +152,61 @@ $responsive-blog-post-vert-seperate: 4rem;
     color: #8ab478;
   }
 }
+
+/* vangst single blog*/
+
+$responsive-blog-post-highlight: $primary-color;
+$responsive-blog-post-vert-seperate: 4rem;
+
+.responsive-blog-post {
+  margin-bottom: $responsive-blog-post-vert-seperate;
+
+  p {
+    color: #8ab478;
+  }
+
+  .button {
+    padding: 0.85rem 3rem;
+    background: $responsive-blog-post-highlight;
+
+    &:hover {
+      background-color: darken($responsive-blog-post-highlight, 5%);
+      transition: color 0.3s ease-in;
+    }
+  }
+
+  .individual-post {
+    margin-bottom: $responsive-blog-post-vert-seperate;
+  }
+
+  h3 {
+    color: white;
+  }
+
+  h4 {
+    margin-bottom: 0;
+
+    &:hover {
+      text-decoration: underline;
+      transition: color 0.3s ease-in;
+    }
+
+    @media screen and (max-width: 39.9375em) {
+      font-size: 1.5rem;
+    }
+  }
+
+  img {
+    margin-bottom: 1.5rem;
+  }
+
+  .date {
+    font-size: 0.8rem;
+    color: $dark-gray;
+  }
+}
+
+
 
 
 

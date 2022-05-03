@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +24,7 @@ class VangstenToevoegenType extends AbstractType
     {
         $builder
             ->add('water', TextType::class, [
-                'label' => 'Naam van het water'
+                'label' => 'Naam van het water',
             ])
             ->add('gewicht', NumberType::class, [
                 'label' => 'Gewicht in ponden'
@@ -51,8 +52,9 @@ class VangstenToevoegenType extends AbstractType
             ])
             ->add('datum', DateType::class)
             ->add('tijd', TimeType::class)
+            ->add('aantekeningen', TextareaType::class)
             ->add('save', SubmitType::class, [
-                'label' => 'Sla op',
+                'label' => 'Opslaan',
                 'attr' => [
                     'class' => 'button mainGreenBackground expanded'
                 ]

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="grid-x grid-padding-y grid-padding-x">
+        <div class="cell">
+            <a class="button float-left mainGreenBackground " href="{{ path('app_vangsten') }}">Terug</a>
+        </div>
+    </div>
+    <div class="responsive-blog-post">
+        <div class="individual-post">
+            <h3>{{ vangst.water }}</h3>
+            <p class="date">{{ vangst.datum|date("d/m/Y") }} - {{ vangst.tijd|format_time() }}</p>
+            <img src="{{asset('fotos/' ~ vangst.image)}}" alt={{ vangst.soort() }}>
+            <h4 class="text-center">Info</h4>
+            <div class="grid-x align-center">
+                <div class="cell small-12 medium-6 large-3 text-center">
+                    <p>Diepte: {{ vangst.diepte }} cm</p>
+                </div>
+                <div class="cell small-12 medium-6 large-3 text-center">
+                    <p>Gewicht: {{ vangst.gewicht }} pond</p>
+                </div>
+                <div class="cell small-12 medium-6 large-3 text-center">
+                    <p>Land: {{ vangst.land }}</p>
+                </div>
+                <div class="cell small-12 medium-6 large-3 text-center">
+                    <p>Soort: {{ vangst.soort() }}</p>
+                </div>
+            </div>
+            <div class="grid-y align-center">
+                <h4 class="text-center">Aantekeningen</h4>
+                <div class="cell auto">
+                    <p>{{ vangst.aantekeningen }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -14,7 +14,11 @@ body {
 
 /*custom colors*/
 .mainGreenBackground {
-  background-color: #8ab478;
+  background-color: #8ab478 !important;
+}
+
+.mainOrangeBackground {
+  background-color: chocolate !important;
 }
 
 .mainGreenColor {
@@ -23,6 +27,18 @@ body {
 
 .formLabelColor {
   color: #d7ecfa;
+}
+
+.delete-button {
+  color: red;
+}
+
+#vangsten_toevoegen label, #vangsten_toevoegen {
+  color: white;
+}
+
+.home_title {
+  color: white;
 }
 
 /*# sourceMappingURL=customStyles.css.map */

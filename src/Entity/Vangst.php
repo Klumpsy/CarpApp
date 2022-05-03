@@ -39,6 +39,9 @@ class Vangst
     #[ORM\Column(type: 'time')]
     private $tijd;
 
+    #[ORM\Column(type: 'string', length: 2500, nullable: true)]
+    private $aantekeningen;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class Vangst
     public function setTijd(\DateTimeInterface $tijd): self
     {
         $this->tijd = $tijd;
+
+        return $this;
+    }
+
+    public function getAantekeningen(): ?string
+    {
+        return $this->aantekeningen;
+    }
+
+    public function setAantekeningen(?string $aantekeningen): self
+    {
+        $this->aantekeningen = $aantekeningen;
 
         return $this;
     }
