@@ -13,9 +13,6 @@ class Vangst
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $water;
-
     #[ORM\Column(type: 'float')]
     private $gewicht;
 
@@ -42,21 +39,13 @@ class Vangst
     #[ORM\Column(type: 'string', length: 2500, nullable: true)]
     private $aantekeningen;
 
+    #[ORM\ManyToOne(targetEntity: Water::class, inversedBy: 'vangsten')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $water;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getWater(): ?string
-    {
-        return $this->water;
-    }
-
-    public function setWater(string $water): self
-    {
-        $this->water = $water;
-
-        return $this;
     }
 
     public function getGewicht(): ?float
@@ -151,6 +140,18 @@ class Vangst
     public function setAantekeningen(?string $aantekeningen): self
     {
         $this->aantekeningen = $aantekeningen;
+
+        return $this;
+    }
+
+    public function getWater(): ?Water
+    {
+        return $this->water;
+    }
+
+    public function setWater(?Water $water): self
+    {
+        $this->water = $water;
 
         return $this;
     }

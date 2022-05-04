@@ -5,16 +5,21 @@
 {% block body %}
 
 <div class="example-wrapper">
+   <h1 class="home_title text-center">Meest recente vangsten</h1>
    <div class="grid-x align-center">
-      <h1 class="home_title">Meest recente vangsten</h1>
-      <div class="product-image-gallery">
-         <img class="pdp-product-image" id="main-product-image" src="{{asset('fotos/' ~ vangstFotos[0].image)}}" alt={{ vangstFotos[0].soort() }}>
-         <br>
-         <ul class="menu product-thumbs align-center">
-            <li> <a class="sim-thumb" data-image="{{asset('fotos/' ~ vangstFotos[0].image)}}"><img src="{{asset('fotos/' ~ vangstFotos[0].image)}}" alt={{ vangstFotos[0].soort() }}></a></li>
-            <li> <a class="sim-thumb" data-image="{{asset('fotos/' ~ vangstFotos[1].image)}}"><img src="{{asset('fotos/' ~ vangstFotos[1].image)}}" alt={{ vangstFotos[1].soort() }}></a></li>
-            <li> <a class="sim-thumb" data-image="{{asset('fotos/' ~ vangstFotos[2].image)}}"><img src="{{asset('fotos/' ~ vangstFotos[2].image)}}" alt={{ vangstFotos[2].soort() }}></a></li>
-         </ul>
+      <div class="cell small-10 medium-6 large-6">
+         <div class="product-image-gallery">
+            <img class="pdp-product-image" id="main-product-image" src="{{asset('fotos/' ~ vangstFotos[0].image)}}" alt={{ vangstFotos[0].soort() }}>
+            <br>
+            <ul class="menu product-thumbs align-center">
+               <li> <a class="sim-thumb" data-image="{{asset('fotos/' ~ vangstFotos[0].image)}}"><img src="{{asset('fotos/' ~ vangstFotos[0].image)}}" alt={{ vangstFotos[0].soort() }}></a></li>
+               <li> <a class="sim-thumb" data-image="{{asset('fotos/' ~ vangstFotos[1].image)}}"><img src="{{asset('fotos/' ~ vangstFotos[1].image)}}" alt={{ vangstFotos[1].soort() }}></a></li>
+               <li> <a class="sim-thumb" data-image="{{asset('fotos/' ~ vangstFotos[2].image)}}"><img src="{{asset('fotos/' ~ vangstFotos[2].image)}}" alt={{ vangstFotos[2].soort() }}></a></li>
+            </ul>
+         </div>
+      </div>
+      <div class="cell small-10 medium-6 large-6">
+
       </div>
    </div>
 </div>

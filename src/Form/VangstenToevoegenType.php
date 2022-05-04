@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Land;
 use App\Entity\Soort;
 use App\Entity\Vangst;
+use App\Entity\Water;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -23,8 +24,9 @@ class VangstenToevoegenType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('water', TextType::class, [
+            ->add('water', EntityType::class, [
                 'label' => 'Naam van het water',
+                'class' => Water::class
             ])
             ->add('gewicht', NumberType::class, [
                 'label' => 'Gewicht in ponden'

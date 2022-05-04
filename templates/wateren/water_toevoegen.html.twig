@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center mainGreenColor">Voeg water toe</h1>
+    <div class="grid-x grid-padding-y grid-padding-x">
+        <div class="cell">
+            <a class="button float-left mainGreenBackground " href="{{ path('app_vangsten') }}">Terug</a>
+        </div>
+    </div>
+    <div class ="grid-x align-center">
+        <div class="cell large-6 medium-8 small-10">
+            {{ form(water_form) }}
+        </div>
+    </div>
+{% endblock %}
