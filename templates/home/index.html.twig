@@ -4,10 +4,10 @@
 
 {% block body %}
 
-<div class="example-wrapper">
+
    <h1 class="home_title text-center">Meest recente vangsten</h1>
-   <div class="grid-x align-center">
-      <div class="cell small-10 medium-6 large-6">
+   <div class="grid-x align-center grid-padding-x grid-padding-y">
+      <div class="cell small-12 medium-6 large-6">
          <div class="product-image-gallery">
             <img class="pdp-product-image" id="main-product-image" src="{{asset('fotos/' ~ vangstFotos[0].image)}}" alt={{ vangstFotos[0].soort() }}>
             <br>
@@ -19,8 +19,11 @@
          </div>
       </div>
       <div class="cell small-10 medium-6 large-6">
-
+         <div class="product-image-gallery">
+            <img class="pdp-product-image" id="main-product-image" src="{{asset('fotos/' ~ recordFish[0].image)}}" alt={{ recordFish[0].soort() }}>
+            <h2 class="text-center">Record: {{ recordFish[0].gewicht }} pond</h2>
+         </div>
       </div>
    </div>
-</div>
+
 {% endblock %}

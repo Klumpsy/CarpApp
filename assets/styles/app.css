@@ -17205,6 +17205,10 @@ readers do not read off random characters that represent icons */
   margin-bottom: 20px;
 }
 
+h2 {
+  color: white;
+}
+
 .product-thumbs a {
   margin-left: 8px;
   margin-right: 8px;
