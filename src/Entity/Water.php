@@ -53,6 +53,9 @@ class Water
     #[ORM\OneToMany(mappedBy: 'water', targetEntity: Vangst::class)]
     private $vangsten;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $hotspots;
+
     public function __construct()
     {
         $this->vangsten = new ArrayCollection();
@@ -209,6 +212,18 @@ class Water
                 $vangsten->setWater(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getHotspots(): ?string
+    {
+        return $this->hotspots;
+    }
+
+    public function setHotspots(?string $hotspots): self
+    {
+        $this->hotspots = $hotspots;
 
         return $this;
     }

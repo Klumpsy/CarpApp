@@ -38,6 +38,7 @@ class VangstenToevoegenType extends AbstractType
             ->add('diepte', NumberType::class, [
                 'label' => 'Diepte waarop gevangen (in cm)'
             ])
+            ->add('rig')
             ->add('foto', FileType::class, [
                 'mapped' => false,
                 'required' => false,

@@ -9,26 +9,30 @@
     <div class="responsive-blog-post">
         <div class="individual-post">
             <h3>{{ water.name }} - {{ water.oppervlakte }} Hectare</h3>
-            <p class="date">{{ water.land}}</p>
-            <p class="date">Bereikbaarheid: {{ water.bereikbaarheid}}</p>
-            <p class="date">Vangsten: {{ water.vangsten|length}}</p>
-            <img src="{{asset('fotos/' ~ water.image)}}" alt={{ water.name}}>
+            <p class="date">{{ water.land() }}</p>
+            <p class="date">Bereikbaarheid: {{ water.bereikbaarheid }}</p>
+            <p class="date mainGreenColor">Vangsten: {{ water.vangsten|length }}</p>
+            <img src="{{asset('fotos/' ~ water.image)}}" alt={{ water.name }}>
             <h4 class="text-center">Info</h4>
             <div class="grid-x align-center">
                 <div class="cell small-12 medium-6 large-3 text-center">
-                    <p>Type Water: {{ water.type }}</p>
+                    <p>Type: {{ water.type }} </p>
                 </div>
                 <div class="cell small-12 medium-6 large-3 text-center">
-                    <p>Nachtvissen: {{ water.nachtvissen ? "Ja" : "Nee" }}</p>
+                    <p>Nachtvissen: {{ water.nachtvissen ? "ja" : "Nee" }} </p>
                 </div>
                 <div class="cell small-12 medium-6 large-3 text-center">
-                    <p>Voerboot {{ water.voerboot ? "Ja" : "Nee" }}</p>
+                    <p>Boot: {{ water.boot ? "ja" : "Nee" }} </p>
                 </div>
                 <div class="cell small-12 medium-6 large-3 text-center">
-                    <p>Boot {{ water.boot ? "Ja" : "Nee" }}</p>
+                    <p>Voerboot: {{ water.voerboot ? "ja" : "Nee" }} </p>
                 </div>
             </div>
             <div class="grid-y align-center grid-padding-y">
+                <h4 class="text-center">Hotspots</h4>
+                <div class="cell auto text-center">
+                    <p>{{ water.hotspots }}</p>
+                </div>
                 <h4 class="text-center">Aantekeningen</h4>
                 <div class="cell auto text-center">
                     <p>{{ water.aantekeningen }}</p>

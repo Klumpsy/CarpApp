@@ -18,9 +18,11 @@
             <div class="cell auto">
                 <ul class="dropdown vertical menu medium-horizontal nav">
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_home') }}">Home</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren') }}">Wateren</a></li>
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_vangsten') }}">Vangsten</a></li>
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_register') }}">Registreer</a></li>
+                    {%  endif %}
                 </ul>
             </div>
             <div class="cell shrink">

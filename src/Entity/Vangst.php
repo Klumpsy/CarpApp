@@ -43,6 +43,9 @@ class Vangst
     #[ORM\JoinColumn(nullable: false)]
     private $water;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $rig;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,6 +155,18 @@ class Vangst
     public function setWater(?Water $water): self
     {
         $this->water = $water;
+
+        return $this;
+    }
+
+    public function getRig(): ?string
+    {
+        return $this->rig;
+    }
+
+    public function setRig(?string $rig): self
+    {
+        $this->rig = $rig;
 
         return $this;
     }

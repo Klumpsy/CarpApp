@@ -28,6 +28,7 @@ class WaterType extends AbstractType
             ->add('voerboot')
             ->add('bereikbaarheid')
             ->add('oppervlakte')
+            ->add('hotspots')
             ->add('foto', FileType::class, [
                 'mapped' => false,
                 'required' => false,

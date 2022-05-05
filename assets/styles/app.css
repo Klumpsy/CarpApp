@@ -17357,6 +17357,7 @@ h2 {
 }
 .responsive-blog-post img {
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 .responsive-blog-post .date {
   font-size: 0.8rem;
