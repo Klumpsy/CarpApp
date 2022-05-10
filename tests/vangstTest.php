@@ -2,6 +2,7 @@
 
 use \PHPUnit\Framework\TestCase;
 use App\Entity\Vangst;
+use App\Entity\Water;
 
 class VangstTest extends TestCase
 {
@@ -14,4 +15,5 @@ class VangstTest extends TestCase
 
         $this->assertEquals(20, $gewicht);
     }
+
 }

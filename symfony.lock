@@ -83,6 +83,9 @@
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
+    "monolog/monolog": {
+        "version": "2.6.0"
+    },
     "myclabs/deep-copy": {
         "version": "1.11.0"
     },
@@ -195,6 +198,18 @@
     },
     "sebastian/version": {
         "version": "3.0.2"
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "9d254a22efca7264203eea98b866f16f944b2f09"
+        },
+        "files": [
+            "./public/.htaccess"
+        ]
     },
     "symfony/asset": {
         "version": "v6.0.7"
@@ -310,6 +325,21 @@
     },
     "symfony/mime": {
         "version": "v6.0.8"
+    },
+    "symfony/monolog-bridge": {
+        "version": "v6.0.3"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.7",
+            "ref": "213676c4ec929f046dfde5ea8e97625b81bc0578"
+        },
+        "files": [
+            "./config/packages/monolog.yaml"
+        ]
     },
     "symfony/options-resolver": {
         "version": "v6.0.3"
