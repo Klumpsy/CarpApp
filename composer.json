@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.12",
+        "http-interop/http-factory-guzzle": "1.0",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "6.0.*",
         "symfony/console": "6.0.*",

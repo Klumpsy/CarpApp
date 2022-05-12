@@ -60,4 +60,37 @@ class VangstRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findSmallestFish()
+    {
+        return $this->createQueryBuilder('fish')
+            ->orderBy('fish.gewicht', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function orderByWeight()
+    {
+        return $this->createQueryBuilder('fish')
+            ->addOrderBy('fish.gewicht', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function search($term)
+    {
+        return $this->createQueryBuilder('fish')
+            ->andWhere('fish.aantekeningen LIKE :searchTerm 
+                OR fish.gewicht LIKE :searchTerm
+                OR water.name LIKE :searchTerm')
+            ->leftJoin('fish.water', 'water')
+            ->addSelect('water')
+            ->setParameter('searchTerm', '%'.$term.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
 }

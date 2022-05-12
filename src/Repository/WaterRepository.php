@@ -47,32 +47,14 @@ class WaterRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Water[] Returns an array of Water objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Water
-    {
-        return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+//    public function findRecordWater()
+//    {
+//        return $this->createQueryBuilder('water')
+//            ->addOrderBy('water.vangsten')
+//            ->leftJoin('vangsten.water', 'vangsten')
+//            ->select('SUM(water.vangsten) as vangstenWater')
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//            ;
+//    }
 }

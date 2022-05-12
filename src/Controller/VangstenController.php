@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Vangst;
+use App\Form\SearchFormType;
 use App\Form\VangstenToevoegenType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,10 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class VangstenController extends AbstractController
 {
     #[Route('/vangsten', name: 'app_vangsten')]
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(ManagerRegistry $doctrine, Request $request): Response
     {
         $em = $doctrine->getManager();
-        $vangsten = $em->getRepository(Vangst::class)->findAll();
+
+        $search = $request->query->get('q');
+        if($search) {
+            $vangsten = $em->getRepository(Vangst::class)->search($search);
+        } else {
+            $vangsten = $em->getRepository(Vangst::class)->findAll();
+        }
 
         return $this->render('vangsten/index.html.twig', [
             'vangsten' => $vangsten,

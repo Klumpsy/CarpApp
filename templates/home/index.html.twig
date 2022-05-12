@@ -3,11 +3,6 @@
 {% block title %}Carpp Home{% endblock %}
 
 {% block body %}
-   {% if app.user %}
-      <div class="mb-3">
-         Je bent ingelogd als:  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-      </div>
-   {% endif %}
    <h1 class="home_title text-center">Meest recente vangsten</h1>
    <div class="grid-x align-center grid-padding-x grid-padding-y">
       <div class="cell small-12 medium-6 large-6">
@@ -21,11 +16,91 @@
             </ul>
          </div>
       </div>
-      <div class="cell small-10 medium-6 large-6">
+      <div class="cell small-12 medium-6 large-6">
          <div class="product-image-gallery">
-            <img class="pdp-product-image" id="main-product-image" src="{{asset('fotos/' ~ recordFish[0].image)}}" alt={{ recordFish[0].soort() }}>
             <h2 class="text-center">Record: {{ recordFish[0].gewicht }} pond</h2>
+            <img class="pdp-product-image" id="main-product-image" src="{{asset('fotos/' ~ recordFish[0].image)}}" alt={{ recordFish[0].soort() }}>
          </div>
+      </div>
+      <div class="cell small-12 medium-12 large-12">
+         {% if is_granted('ROLE_USER') %}
+            <section class="product-feature-section">
+               <div class="product-feature-section-outer">
+                  <h2 class="text-center">Data</h2>
+
+                  <div class="product-feature-section-inner">
+                     <div class="product-feature-section-feature top-left">
+                        <i class="fa fa-fish-fins" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Totaal aantal vissen</p>
+                           <p class="feature-desc">{{ vangstFotos|length }}</p>
+                        </div>
+                     </div>
+
+                     <div class="product-feature-section-feature top-right">
+                        <i class="fa fa-water" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Totaal aantal wateren</p>
+                           <p class="feature-desc">{{ totaalWateren|length }}</p>
+                        </div>
+                     </div>
+
+                     <div class="product-feature-section-feature bottom-left">
+                        <i class="fa fa-trophy" aria-hidden="true" style="color: yellow"></i>
+                        <div>
+                           <p class="feature-title">Record vis</p>
+                           <p class="feature-desc">{{ recordFish[0].gewicht }} pond</p>
+                        </div>
+                     </div>
+
+                     <div class="product-feature-section-feature bottom-right">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Kleinste vis</p>
+                           <p class="feature-desc">{{ smallestFish[0].gewicht}} pond</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="product-feature-section">
+               <div class="product-feature-section-outer">
+                  <div class="product-feature-section-inner">
+                     <div class="product-feature-section-feature top-left">
+                        <i class="fa fa-fish" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Water met meeste vangsten</p>
+                           <p class="feature-desc">nttv</p>
+                        </div>
+                     </div>
+
+                     <div class="product-feature-section-feature top-right">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Gemiddelde gewicht</p>
+                           <p class="feature-desc">nttv</p>
+                        </div>
+                     </div>
+
+                     <div class="product-feature-section-feature bottom-left">
+                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Spiegelkarpers</p>
+                           <p class="feature-desc">nttv</p>
+                        </div>
+                     </div>
+
+                     <div class="product-feature-section-feature bottom-right">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <div>
+                           <p class="feature-title">Schubkarpers</p>
+                           <p class="feature-desc">nttv</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+        {% endif %}
       </div>
    </div>
 
