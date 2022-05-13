@@ -17203,6 +17203,8 @@ readers do not read off random characters that represent icons */
 
 .pdp-product-image {
   margin-bottom: 20px;
+  max-height: 500px;
+  width: 100%;
 }
 
 h2 {
@@ -17324,7 +17326,7 @@ h2 {
 
 /* vangst single blog*/
 .responsive-blog-post {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 .responsive-blog-post p {
   color: #8ab478;
@@ -17338,7 +17340,7 @@ h2 {
   transition: color 0.3s ease-in;
 }
 .responsive-blog-post .individual-post {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 .responsive-blog-post h3 {
   color: white;
@@ -17358,6 +17360,8 @@ h2 {
 .responsive-blog-post img {
   margin-bottom: 1.5rem;
   width: 100%;
+  max-width: 100%;
+  max-height: 230px;
 }
 .responsive-blog-post .date {
   font-size: 0.8rem;
