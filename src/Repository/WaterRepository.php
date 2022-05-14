@@ -57,4 +57,19 @@ class WaterRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //            ;
 //    }
+
+    public function search($term)
+    {
+        return $this->createQueryBuilder('water')
+            ->andWhere('water.name LIKE :searchTerm 
+                OR water.aantekeningen LIKE :searchTerm
+                OR water.type LIKE :searchTerm
+                OR water.hotspots LIKE :searchTerm
+                ')
+            ->addSelect('water')
+            ->setParameter('searchTerm', '%'.$term.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
 }

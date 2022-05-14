@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Vangst;
 use App\Entity\Water;
 use App\Form\WaterType;
 use App\Repository\WaterRepository;
@@ -16,7 +17,14 @@ class WaterenController extends AbstractController
     #[Route('/wateren', name: 'app_wateren')]
     public function index(Request $request, WaterRepository $waterRepository): Response
     {
-        $wateren = $waterRepository->findAll();
+
+
+        $search = $request->query->get('q');
+        if($search) {
+            $wateren = $waterRepository->search($search);
+        } else {
+            $wateren = $waterRepository->findAll();
+        }
 
         return $this->render('wateren/index.html.twig', [
             'wateren' => $wateren,

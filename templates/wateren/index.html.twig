@@ -12,6 +12,13 @@
         </div>
     {% endfor %}
     <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell auto">
+            <form class="navbar-form" role="search" action="{{ path('app_wateren') }}">
+                <div class="form-group-search">
+                    <label><input type="text" class="form-control" placeholder="Zoek water" name="q"/><i class="fa-solid fa-magnifying-glass"></i></label>
+                </div>
+            </form>
+        </div>
         <div class="cell">
             <a class="button float-left mainGreenBackground " href="{{ path('app_vangsten') }}">Terug</a>
             <a class="button float-right mainGreenBackground " href="{{ path('app_wateren_toevoegen') }}"><i class="fa-solid fa-plus"></i> Water</a>

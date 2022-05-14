@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="responsive-blog-post">
-        <div class="individual-post">
+        <div class="individual-post-big">
             <h3>{{ vangst.water }}</h3>
             <p class="date">{{ vangst.datum|date("d/m/Y") }} - {{ vangst.tijd|format_time() }}</p>
             <img src="{{asset('fotos/' ~ vangst.image)}}" alt={{ vangst.soort() }}>

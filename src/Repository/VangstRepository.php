@@ -85,7 +85,8 @@ class VangstRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('fish')
             ->andWhere('fish.aantekeningen LIKE :searchTerm 
                 OR fish.gewicht LIKE :searchTerm
-                OR water.name LIKE :searchTerm')
+                OR water.name LIKE :searchTerm 
+                OR fish.rig LIKE :searchTerm')
             ->leftJoin('fish.water', 'water')
             ->addSelect('water')
             ->setParameter('searchTerm', '%'.$term.'%')
