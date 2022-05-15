@@ -46,6 +46,18 @@ class Vangst
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $rig;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $graden;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $windrichting;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $luchtdruk;
+
+    #[ORM\Column(type: 'float', nullable: true)]
+    private $windsnelheid;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,6 +179,54 @@ class Vangst
     public function setRig(?string $rig): self
     {
         $this->rig = $rig;
+
+        return $this;
+    }
+
+    public function getGraden(): ?int
+    {
+        return $this->graden;
+    }
+
+    public function setGraden(?int $graden): self
+    {
+        $this->graden = $graden;
+
+        return $this;
+    }
+
+    public function getWindrichting(): ?string
+    {
+        return $this->windrichting;
+    }
+
+    public function setWindrichting(?string $windrichting): self
+    {
+        $this->windrichting = $windrichting;
+
+        return $this;
+    }
+
+    public function getLuchtdruk(): ?float
+    {
+        return $this->luchtdruk;
+    }
+
+    public function setLuchtdruk(?float $luchtdruk): self
+    {
+        $this->luchtdruk = $luchtdruk;
+
+        return $this;
+    }
+
+    public function getWindsnelheid(): ?float
+    {
+        return $this->windsnelheid;
+    }
+
+    public function setWindsnelheid(?float $windsnelheid): self
+    {
+        $this->windsnelheid = $windsnelheid;
 
         return $this;
     }

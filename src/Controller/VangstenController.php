@@ -39,6 +39,7 @@ class VangstenController extends AbstractController
         $vangstForm->handleRequest($request);
 
         if ($vangstForm->isSubmitted() && $vangstForm->isValid()) {
+
             $em = $doctrine->getManager();
 
             $image = $request->files->get('vangsten_toevoegen')['foto'];

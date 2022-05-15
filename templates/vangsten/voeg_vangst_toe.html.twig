@@ -12,4 +12,8 @@
                 {{ form(vangsten_form) }}
             </div>
     </div>
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('app_weather') }}
+        {% endblock %}
 {% endblock %}

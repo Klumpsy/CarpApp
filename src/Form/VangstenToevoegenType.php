@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -56,6 +57,30 @@ class VangstenToevoegenType extends AbstractType
             ->add('datum', DateType::class)
             ->add('tijd', TimeType::class)
             ->add('aantekeningen', TextareaType::class)
+            ->add('graden', HiddenType::class, [
+                'attr' => [
+                    'id' => 'weather-data-graden',
+                    'value' => ''
+                ]
+            ])
+            ->add('windrichting', HiddenType::class, [
+                'attr' => [
+                    'id' => 'weather-data-windrichting',
+                    'value' => ''
+                ]
+            ])
+            ->add('windsnelheid', HiddenType::class, [
+                'attr' => [
+                    'id' => 'weather-data-windsnelheid',
+                    'value' => ''
+                ]
+            ])
+            ->add('luchtdruk', HiddenType::class, [
+                'attr' => [
+                    'id' => 'weather-data-luchtdruk',
+                    'value' => ''
+                ]
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Opslaan',
                 'attr' => [
