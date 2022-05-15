@@ -38,7 +38,7 @@
                      </div>
 
                      <div class="product-feature-section-feature top-right">
-                        <i class="fa fa-water" aria-hidden="true"></i>
+                        <i class="fa fa-water water-icon" aria-hidden="true"></i>
                         <div>
                            <p class="feature-title">Totaal aantal wateren</p>
                            <p class="feature-desc">{{ totaalWateren|length }}</p>
@@ -54,7 +54,7 @@
                      </div>
 
                      <div class="product-feature-section-feature bottom-right">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <i class="fa fa-hand-lizard" aria-hidden="true"></i>
                         <div>
                            <p class="feature-title">Kleinste vis</p>
                            <p class="feature-desc">{{ smallestFish[0].gewicht}} pond</p>
@@ -67,10 +67,21 @@
                <div class="product-feature-section-outer">
                   <div class="product-feature-section-inner">
                      <div class="product-feature-section-feature top-left">
-                        <i class="fa fa-fish" aria-hidden="true"></i>
+                        <i class="fa fa-circle-check check-circle-icon" aria-hidden="true"></i>
                         <div>
                            <p class="feature-title">Water met meeste vangsten</p>
-                           <p class="feature-desc">nttv</p>
+                           <p class="feature-desc">
+                              {% set maxValue = 0 %}
+                              {% set recordwater = null %}
+
+                              {% for water in totaalWateren %}
+                                 {% if water.vangsten|length > maxValue %}
+                                    {% set maxValue = water.vangsten|length %}
+                                    {% set recordwater = water %}
+                                 {% endif %}
+                              {% endfor %}
+                              {{recordwater.name}}
+                           </p>
                         </div>
                      </div>
 
@@ -89,18 +100,18 @@
                      </div>
 
                      <div class="product-feature-section-feature bottom-left">
-                        <i class="fa fa-coffee" aria-hidden="true"></i>
+                        <i class="fa fa-fish spiegel-carp" aria-hidden="true"></i>
                         <div>
                            <p class="feature-title">Spiegelkarpers</p>
-                           <p class="feature-desc">nttv</p>
+                           <p class="feature-desc">{{ spiegelKarpers|length }}</p>
                         </div>
                      </div>
 
                      <div class="product-feature-section-feature bottom-right">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <i class="fa fa-fish schub-carp" aria-hidden="true"></i>
                         <div>
                            <p class="feature-title">Schubkarpers</p>
-                           <p class="feature-desc">nttv</p>
+                           <p class="feature-desc">{{ schubKarpers|length }}</p>
                         </div>
                      </div>
                   </div>

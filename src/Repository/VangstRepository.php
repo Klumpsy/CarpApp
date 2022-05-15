@@ -94,4 +94,16 @@ class VangstRepository extends ServiceEntityRepository
             ->execute()
             ;
     }
+
+    public function orderByKind($kind)
+    {
+        return $this->createQueryBuilder('fish')
+            ->leftJoin('fish.soort', 'soort')
+            ->addSelect('soort.name')
+            ->andWhere('soort.name = :searchTerm')
+            ->setParameter('searchTerm', $kind)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

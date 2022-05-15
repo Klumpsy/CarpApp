@@ -13,18 +13,20 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(VangstRepository $vangstRepository, WaterRepository $waterRepository): Response
     {
-        $totaalVansten = array_reverse($vangstRepository->findAll());
+        $totaalVangsten = array_reverse($vangstRepository->findAll());
         $totaalWateren = $waterRepository->findAll();
         $recordFish = $vangstRepository->findRecordFish();
         $smallestFish = $vangstRepository->findSmallestFish();
-//        $recordWater = $waterRepository->findRecordWater();
+        $spiegelKarpers = $vangstRepository->orderByKind('spiegelkarper');
+        $schubKarpers = $vangstRepository->orderByKind('schubkarper');
 
         return $this->render('home/index.html.twig', [
-            'vangstFotos' => $totaalVansten,
+            'vangstFotos' => $totaalVangsten,
             'totaalWateren' => $totaalWateren,
             'recordFish' => $recordFish,
-            'smallestFish' => $smallestFish
-//            'recordWater' => $recordWater
+            'smallestFish' => $smallestFish,
+            'spiegelKarpers' => $spiegelKarpers,
+            'schubKarpers' => $schubKarpers
         ]);
     }
 }
