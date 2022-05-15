@@ -30,9 +30,34 @@ function showLocation(position) {
       })
       .then((weather) => {
         console.log(weather);
-        weatherGraden.value = weather.main.temp;
-        weatherWindsnelheid.value = weather.wind.speed;
-        weatherWindrichting.value = weather.wind.deg;
+        weatherGraden.value = weather.main.temp - 273.15;
+        weatherWindsnelheid.value = weather.wind.speed * 3.6;
+        let windrichting = weather.wind.deg;
+
+        function degToCompass(num) {
+          var val = Math.floor(num / 22.5 + 0.5);
+          var arr = [
+            "N",
+            "NNO",
+            "NO",
+            "ONO",
+            "O",
+            "OZO",
+            "ZO",
+            "ZZO",
+            "Z",
+            "ZZW",
+            "ZW",
+            "WZW",
+            "W",
+            "WNW",
+            "NW",
+            "NNW",
+          ];
+          return arr[val % 16];
+        }
+
+        weatherWindrichting.value = degToCompass(windrichting);
         weatherLuchtdruk.value = weather.main.pressure;
       });
   }
@@ -41,8 +66,6 @@ function showLocation(position) {
 function errorHandler(err) {
   if (err) {
     alert("Sorry, het weerbericht werkt niet");
-  } else if (err.code == 2) {
-    alert("Positie is niet vindbaar");
   }
 }
 

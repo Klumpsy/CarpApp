@@ -37,12 +37,13 @@ class VangstenToevoegenType extends AbstractType
                 'label' => 'Soort'
             ])
             ->add('diepte', NumberType::class, [
-                'label' => 'Diepte waarop gevangen (in cm)'
+                'label' => 'Diepte waarop gevangen (in cm)',
+                'required' => false
             ])
             ->add('rig')
             ->add('foto', FileType::class, [
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '10M',
@@ -56,7 +57,9 @@ class VangstenToevoegenType extends AbstractType
             ])
             ->add('datum', DateType::class)
             ->add('tijd', TimeType::class)
-            ->add('aantekeningen', TextareaType::class)
+            ->add('aantekeningen', TextareaType::class, [
+                'required' => false,
+            ])
             ->add('graden', HiddenType::class, [
                 'attr' => [
                     'id' => 'weather-data-graden',
