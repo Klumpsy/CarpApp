@@ -51,10 +51,21 @@ class VangstRepository extends ServiceEntityRepository
      * @return Vangst[] Returns an array of Vangst objects
      */
 
+    public function findAllFish()
+    {
+        return $this->createQueryBuilder('fish')
+            ->leftJoin('fish.water', 'water')
+            ->addSelect('water')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
     public function findRecordFish()
     {
-        return $this->createQueryBuilder('v')
-            ->orderBy('v.gewicht', 'DESC')
+        return $this->createQueryBuilder('fish')
+            ->orderBy('fish.gewicht', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
             ->getResult()
@@ -104,6 +115,18 @@ class VangstRepository extends ServiceEntityRepository
             ->setParameter('searchTerm', $kind)
             ->getQuery()
             ->getResult()
+            ;
+    }
+
+    public function findWithWaterJoin($id)
+    {
+        return $this->createQueryBuilder('fish')
+            ->andWhere('fish.id = :id')
+            ->leftJoin('fish.water', 'water')
+            ->addSelect('water')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
             ;
     }
 }

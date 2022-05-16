@@ -13,8 +13,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(VangstRepository $vangstRepository, WaterRepository $waterRepository): Response
     {
-        $totaalVangsten = array_reverse($vangstRepository->findAll());
-        $totaalWateren = $waterRepository->findAll();
+        $totaalVangsten = array_reverse($vangstRepository->findAllFish());
+        $totaalWateren = $waterRepository->findAllWater();
         $recordFish = $vangstRepository->findRecordFish();
         $smallestFish = $vangstRepository->findSmallestFish();
         $spiegelKarpers = $vangstRepository->orderByKind('spiegelkarper');

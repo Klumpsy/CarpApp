@@ -24,6 +24,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   }
 }
 
+
+
 /* Image slider */
 .product-image-gallery {
   background-color: rgba(23, 37, 22, 0.62);
@@ -36,7 +38,9 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   width: 100%;
 }
 h2 {
-  color:white;
+
+  font-size: 20px;
+  color: #8ab478;
 }
 
 .product-thumbs {
@@ -372,7 +376,7 @@ $product-feature-section-divider-color: $medium-gray;
 .product-feature-section-feature {
   display: flex;
   align-items: flex-start;
-  padding: 1rem;
+  padding: 1.5rem;
   flex: 1 0 50%;
   justify-content: flex-start;
   flex-direction: column;
@@ -398,10 +402,13 @@ $product-feature-section-divider-color: $medium-gray;
 
   .feature-desc {
     margin-bottom: 0;
+    color: #8ab478;
+    font-weight: 800;
   }
 
   .fa {
     margin-right: 1.25rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
   }
 

@@ -47,6 +47,16 @@ class WaterRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllWater()
+    {
+        return $this->createQueryBuilder('water')
+            ->leftJoin('water.vangsten', 'vangsten')
+            ->addSelect('vangsten')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function findRecordWater()
     {
         return $this->createQueryBuilder('water')

@@ -17208,7 +17208,8 @@ readers do not read off random characters that represent icons */
 }
 
 h2 {
-  color: white;
+  font-size: 20px;
+  color: #8ab478;
 }
 
 .product-thumbs a {
@@ -17511,7 +17512,7 @@ h2 {
 .product-feature-section-feature {
   display: flex;
   align-items: flex-start;
-  padding: 1rem;
+  padding: 1.5rem;
   flex: 1 0 50%;
   justify-content: flex-start;
   flex-direction: column;
@@ -17533,9 +17534,12 @@ h2 {
 }
 .product-feature-section-feature .feature-desc {
   margin-bottom: 0;
+  color: #8ab478;
+  font-weight: 800;
 }
 .product-feature-section-feature .fa {
   margin-right: 1.25rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
 }
 @media print, screen and (min-width: 40em) {

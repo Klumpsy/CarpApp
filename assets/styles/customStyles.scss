@@ -51,10 +51,6 @@ body {
   color:white;
 }
 
-.home_title {
-  color: white;
-}
-
 .form-group-search {
   label {
     position: relative;
@@ -82,6 +78,16 @@ body {
   color: mediumseagreen;
 }
 
+.search-button-class {
+
+  &:hover {
+    cursor: pointer;
+    i {
+      color: #8ab478;
+      transform: scale(1.2)
+    }
+  }
+}
 
 
 

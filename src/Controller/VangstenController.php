@@ -23,7 +23,7 @@ class VangstenController extends AbstractController
         if($search) {
             $vangsten = $em->getRepository(Vangst::class)->search($search);
         } else {
-            $vangsten = $em->getRepository(Vangst::class)->findAll();
+            $vangsten = $em->getRepository(Vangst::class)->findAllFish();
         }
 
         return $this->render('vangsten/index.html.twig', [
@@ -46,14 +46,13 @@ class VangstenController extends AbstractController
 
             if ($image) {
                $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
+                $image->move(
+                    $this->getParameter('fotos_folder'),
+                    $imageName
+                );
+                $vangst->setImage($imageName);
             }
 
-            $image->move(
-                $this->getParameter('fotos_folder'),
-                $imageName
-            );
-
-            $vangst->setImage($imageName);
             $em->persist($vangst);
             $em->flush();
 
@@ -69,7 +68,7 @@ class VangstenController extends AbstractController
     #[Route('/vangst/single/{id}', name: 'app_vangst_single')]
     public function single($id, ManagerRegistry $doctrine, Request $request): Response
     {
-        $singleVangst = $doctrine->getRepository(Vangst::class)->find($id);
+        $singleVangst = $doctrine->getRepository(Vangst::class)->findWithWaterJoin($id);
 
         return $this->render('vangsten/single_vangst.html.twig', [
             'vangst' => $singleVangst,
@@ -79,12 +78,23 @@ class VangstenController extends AbstractController
     #[Route('/vangst/aanpassen/{id}', name: 'app_vangst_aanpassen')]
     public function edit($id, ManagerRegistry $doctrine, Request $request): Response
     {
-        $vangst = $doctrine->getRepository(Vangst::class)->find($id);
+        $vangst = $doctrine->getRepository(Vangst::class)->findWithWaterJoin($id);
         $vangstForm = $this->createForm(VangstenToevoegenType::class, $vangst);
         $vangstForm->handleRequest($request);
 
         if ($vangstForm->isSubmitted() && $vangstForm->isValid()) {
             $em = $doctrine->getManager();
+
+            $image = $request->files->get('vangsten_toevoegen')['foto'];
+
+            if ($image) {
+                $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
+                $image->move(
+                    $this->getParameter('fotos_folder'),
+                    $imageName
+                );
+                $vangst->setImage($imageName);
+            }
 
             $em->persist($vangst);
             $em->flush();
@@ -103,7 +113,7 @@ class VangstenController extends AbstractController
     public function delete($id, ManagerRegistry $doctrine, Request $request): Response
     {
         $em = $doctrine->getManager();
-        $singleVangst = $doctrine->getRepository(Vangst::class)->find($id);
+        $singleVangst = $doctrine->getRepository(Vangst::class)->findWithWaterJoin($id);
         $em->remove($singleVangst);
         $em->flush();
 

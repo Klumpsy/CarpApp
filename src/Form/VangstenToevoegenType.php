@@ -43,7 +43,7 @@ class VangstenToevoegenType extends AbstractType
             ->add('rig')
             ->add('foto', FileType::class, [
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '10M',

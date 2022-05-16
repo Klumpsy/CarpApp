@@ -49,10 +49,6 @@ body {
   color: white;
 }
 
-.home_title {
-  color: white;
-}
-
 .form-group-search label {
   position: relative;
 }
@@ -76,6 +72,14 @@ body {
 
 .check-circle-icon {
   color: mediumseagreen;
+}
+
+.search-button-class:hover {
+  cursor: pointer;
+}
+.search-button-class:hover i {
+  color: #8ab478;
+  transform: scale(1.2);
 }
 
 /*# sourceMappingURL=customStyles.css.map */

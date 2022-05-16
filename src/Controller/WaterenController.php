@@ -23,7 +23,7 @@ class WaterenController extends AbstractController
         if($search) {
             $wateren = $waterRepository->search($search);
         } else {
-            $wateren = $waterRepository->findAll();
+            $wateren = $waterRepository->findAllWater();
         }
 
         return $this->render('wateren/index.html.twig', [
@@ -45,14 +45,14 @@ class WaterenController extends AbstractController
 
             if ($image) {
                 $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
+                $image->move(
+                    $this->getParameter('fotos_folder'),
+                    $imageName
+                );
+
+                $water->setImage($imageName);
             }
 
-            $image->move(
-                $this->getParameter('fotos_folder'),
-                $imageName
-            );
-
-            $water->setImage($imageName);
             $em->persist($water);
             $em->flush();
 
@@ -84,6 +84,18 @@ class WaterenController extends AbstractController
 
         if ($waterForm->isSubmitted() && $waterForm->isValid()) {
             $em = $doctrine->getManager();
+
+            $image = $request->files->get('water')['foto'];
+
+            if ($image) {
+                $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
+                $image->move(
+                    $this->getParameter('fotos_folder'),
+                    $imageName
+                );
+
+                $water->setImage($imageName);
+            }
 
             $em->persist($water);
             $em->flush();

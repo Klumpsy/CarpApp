@@ -23,7 +23,12 @@
     <div class="cell auto">
         <form class="navbar-form" role="search" action="{{ path('app_vangsten') }}">
             <div class="form-group-search">
-                <label><input type="text" class="form-control" placeholder="Zoek vangst" name="q"/><i class="fa-solid fa-magnifying-glass"></i></label>
+                <label>
+                    <input type="text" class="form-control" placeholder="Zoek vangst" name="q"/>
+                    <button type="submit" class="search-button-class">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </label>
             </div>
         </form>
     </div>
