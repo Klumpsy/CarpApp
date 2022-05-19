@@ -6,7 +6,10 @@ use App\Entity\Land;
 use App\Entity\Water;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,7 +28,6 @@ class WaterType extends AbstractType
             ->add('land', EntityType::class, [
                 'class' => Land::class
             ])
-            ->add('type')
             ->add('nachtvissen')
             ->add('boot')
             ->add('voerboot')
@@ -35,6 +37,20 @@ class WaterType extends AbstractType
             ->add('oppervlakte', TextareaType::class, [
                 'label' => 'Oppervlakte in (Ha)',
                 'required' => true
+            ])
+
+            ->add ('kreeften')
+            ->add ('moeilijk', CheckboxType::class, [
+                'label' => "Moeilijk water",
+                'required' => false,
+            ])
+            ->add ('smallFish', CheckboxType::class, [
+                'label' => "Veel kleine vis",
+                'required' => false,
+            ])
+            ->add('bigFish', CheckboxType::class, [
+                'label'=>'Grote vis',
+                'required' => false,
             ])
             ->add('hotspots', TextareaType::class, [
                 'required' => false,
@@ -52,6 +68,9 @@ class WaterType extends AbstractType
             ->add('aantekeningen', TextareaType::class, [
                 'required' => false
             ])
+
+            ->add('ongewenst')
+
             ->add('Opslaan', SubmitType::class, [
                 'attr' => [
                     'class' => "button mainGreenBackground expanded"

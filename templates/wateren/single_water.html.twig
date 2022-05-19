@@ -8,6 +8,9 @@
     </div>
     <div class="responsive-blog-post">
         <div class="individual-post-big">
+            {% if water.ongewenst %}
+                <h2 style="color: red">ONGEWENST WATER</h2>
+            {% endif %}
             <h3>{{ water.name }} - {{ water.oppervlakte }} Hectare</h3>
             <p class="date">{{ water.land() }}</p>
             <p class="date">Bereikbaarheid: {{ water.bereikbaarheid }}</p>
@@ -34,7 +37,7 @@
                     <p>{{ water.hotspots }}</p>
                 </div>
                 <h4 class="text-center">Aantekeningen</h4>
-                <div class="cell auto text-center">
+                <div class="cell shrink text-center">
                     <p>{{ water.aantekeningen }}</p>
                 </div>
             </div>

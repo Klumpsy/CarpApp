@@ -6,6 +6,7 @@ use App\Entity\Vangst;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -129,4 +130,5 @@ class VangstRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
+
 }

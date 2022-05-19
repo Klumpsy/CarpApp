@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carpp Ongewenste wateren{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('water_message') %}
+        <div data-closable class="callout alert-callout-subtle success">
+            <strong>Klasse!</strong> {{ message }}
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">⊗</span>
+            </button>
+        </div>
+    {% endfor %}
+    <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell auto">
+            <form class="navbar-form" role="search" action="{{ path('app_wateren') }}">
+                <div class="form-group-search">
+                    <label>
+                        <input type="text" class="form-control" placeholder="Zoek water" name="q"/>
+                        <button type="submit" class="search-button-class">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="cell">
+            <a class="button float-left mainGreenBackground " href="{{ path('app_home') }}">Terug</a>
+            <a class="button float-right mainGreenBackground " href="{{ path('app_wateren_toevoegen') }}"><i class="fa-solid fa-plus"></i> Water</a>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x grid-padding-y align-center">
+            {% for water in wateren %}
+                {% if water.ongewenst %}
+                <div class="cell small-12 medium-6 large-4">
+                    <div class="card-user-profile">
+                        <span class="badge catch_counter"><i class="fa-solid fa-fish-fins"></i> {{ water.vangsten|length}}</span>
+                        <img class="card-user-profile-img" src="{{asset('fotos/' ~ water.image)}}" alt={{ water.name }}" alt="{{ water.name }}" />
+                        <div class="card-user-profile-content card-section">
+                            <div class="card-user-profile-avatar">
+                                <img {% if water.land == "Nederland" %}src="
+                                    {{ asset('build/images/dutch-flag.jpg') }}"
+                                        {% elseif water.land == "Frankrijk" %} src="
+                                    {{ asset('build/images/france-flag.jpg') }}
+                                    "{% endif %} alt="{{ water.name }}"/>
+                            </div>
+                            <p class="card-user-profile-name">{{ water.name }}</p>
+                            <p class="card-user-profile-status">{{ water.oppervlakte }} hectare - {{ water.type  }}</p>
+                        </div>
+
+                        <div class="card-user-profile-actions">
+                            <a href="{{ path('app_water_single', {id: water.id}) }}" class="card-user-profile-button button hollow">Meer info</a>
+                            <a href="{{ path('app_water_aanpassen', {id: water.id}) }}" class="card-user-profile-button button hollow secondary">Bewerk</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

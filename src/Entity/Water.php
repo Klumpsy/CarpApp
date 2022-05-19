@@ -38,6 +38,9 @@ class Water
     #[ORM\Column(type: 'boolean')]
     private $voerboot;
 
+    #[ORM\Column(type: 'boolean')]
+    private $ongewenst;
+
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $bereikbaarheid;
 
@@ -55,6 +58,18 @@ class Water
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $hotspots;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $kreeften;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $moeilijk;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $bigFish;
+
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $smallFish;
 
     public function __construct()
     {
@@ -134,6 +149,18 @@ class Water
     public function setVoerboot(bool $voerboot): self
     {
         $this->voerboot = $voerboot;
+
+        return $this;
+    }
+
+    public function GetOngewenst(): ?bool
+    {
+        return $this->ongewenst;
+    }
+
+    public function setOngewenst(bool $ongewenst): self
+    {
+        $this->ongewenst = $ongewenst;
 
         return $this;
     }
@@ -224,6 +251,54 @@ class Water
     public function setHotspots(?string $hotspots): self
     {
         $this->hotspots = $hotspots;
+
+        return $this;
+    }
+
+    public function isKreeften(): ?bool
+    {
+        return $this->kreeften;
+    }
+
+    public function setKreeften(?bool $kreeften): self
+    {
+        $this->kreeften = $kreeften;
+
+        return $this;
+    }
+
+    public function isMoeilijk(): ?bool
+    {
+        return $this->moeilijk;
+    }
+
+    public function setMoeilijk(?bool $moeilijk): self
+    {
+        $this->moeilijk = $moeilijk;
+
+        return $this;
+    }
+
+    public function isBigFish(): ?bool
+    {
+        return $this->bigFish;
+    }
+
+    public function setBigFish(?bool $bigFish): self
+    {
+        $this->bigFish = $bigFish;
+
+        return $this;
+    }
+
+    public function isSmallFish(): ?bool
+    {
+        return $this->smallFish;
+    }
+
+    public function setSmallFish(?bool $smallFish): self
+    {
+        $this->smallFish = $smallFish;
 
         return $this;
     }

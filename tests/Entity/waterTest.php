@@ -2,7 +2,6 @@
 
 use \PHPUnit\Framework\TestCase;
 use App\Entity\Water;
-use App\Entity\Vangst;
 
 class WaterTest extends TestCase
 {

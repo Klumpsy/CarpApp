@@ -17287,6 +17287,7 @@ h2 {
   margin-bottom: 4rem;
   background-color: rgba(2, 2, 2, 0.4);
   padding: 20px;
+  border-radius: 20px !important;
 }
 .responsive-blog-post p {
   color: white;
@@ -17347,7 +17348,8 @@ h2 {
   max-height: 230px;
 }
 .responsive-blog-post .individual-post-big {
-  max-height: 100%;
+  min-height: 100%;
+  padding-bottom: 30px;
 }
 .responsive-blog-post h3 {
   color: white;
@@ -17378,6 +17380,7 @@ h2 {
 .card-user-profile {
   position: relative;
   z-index: 0;
+  border-radius: 20px !important;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -17392,14 +17395,46 @@ h2 {
 .card-user-profile > :last-child {
   margin-bottom: 0;
 }
-.card-user-profile .catch_counter {
+.card-user-profile .catch_bigFish, .card-user-profile .catch_hardWater, .card-user-profile .catch_LotsOfFish, .card-user-profile .catch_counter, .card-user-profile .catch_lobster {
   position: absolute;
-  right: 10px;
-  top: 10px;
   z-index: 1000;
-  padding: 10px;
   font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+}
+.card-user-profile .catch_bigFish, .card-user-profile .catch_hardWater, .card-user-profile .catch_LotsOfFish, .card-user-profile .catch_lobster {
+  font-size: 20px;
+}
+.card-user-profile .catch_counter {
+  top: 0;
+  right: 0;
+  width: 100px;
   background-color: #8ab478 !important;
+  border-radius: 0 0 0 10px;
+}
+.card-user-profile .catch_counter i {
+  margin: 5px;
+}
+.card-user-profile .catch_bigFish {
+  top: 65px;
+  background-color: #ce9d41 !important;
+}
+.card-user-profile .catch_LotsOfFish {
+  top: 120px;
+  background-color: #33aec2 !important;
+}
+.card-user-profile .catch_hardWater {
+  top: 175px;
+  background-color: #c7354d !important;
+}
+.card-user-profile .catch_lobster {
+  top: 230px;
+  right: 10px;
+  background-color: #cc8b00;
 }
 .card-user-profile .card-user-profile-img {
   max-height: 300px;

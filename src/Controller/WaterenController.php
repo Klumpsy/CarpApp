@@ -31,6 +31,21 @@ class WaterenController extends AbstractController
         ]);
     }
 
+    #[Route('/ongewenste-wateren', name: 'app_wateren_ongewenst')]
+    public function ongewenst(Request $request, WaterRepository $waterRepository): Response
+    {
+        $search = $request->query->get('q');
+        if($search) {
+            $wateren = $waterRepository->search($search);
+        } else {
+            $wateren = $waterRepository->findAllWater();
+        }
+
+        return $this->render('wateren/ongewenste_wateren.html.twig', [
+            'wateren' => $wateren,
+        ]);
+    }
+
     #[Route('/wateren/toevoegen', name: 'app_wateren_toevoegen')]
     public function add(Request $request, ManagerRegistry $doctrine): Response
     {

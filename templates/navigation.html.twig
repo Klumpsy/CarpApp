@@ -7,19 +7,25 @@
     </div>
 </div>
 
-<div class="top-bar navigation-background border_bottom" id="main-nav" data-responsive-toggle="main-nav" data-animate="hinge-in-from-top hinge-out-from-top">
+<div class="top-bar navigation-background border_bottom" id="main-nav" data-responsive-toggle="main-nav" data-animate="slide-in-left slide-out-left">
     <div class="top-bar-left hide-for-small-only ">
         <a href="{{ path('app_home') }}">
             <img class="website-logo-navigation" src="{{ asset('build/images/CArPP_logo.png') }}" alt="logo cArPP website"/>
         </a>
     </div>
     <div class="top-bar-right ">
-        <div class="grid-x grid-padding-x grid-padding-y text-center align-middle">
+        <div class="grid-x grid-padding-x grid-padding-y text-center align-middle" >
             <div class="cell small-12 medium-auto">
-                <ul class="dropdown vertical menu medium-horizontal nav ">
+                <ul class="dropdown vertical menu medium-horizontal nav " data-dropdown-menu >
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_home') }}">Home</a></li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren') }}">Wateren</a></li>
+                    <li>
+                        <a class='navigation-background mainGreenColor' href="#">Wateren</a>
+                        <ul class="menu" >
+                            <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren') }}">Wateren</a></li>
+                            <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren_ongewenst') }}">Wateren ongewenst</a></li>
+                        </ul>
+                    </li>
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_vangsten') }}">Vangsten</a></li>
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_register') }}">Registreer</a></li>
                     {%  endif %}
