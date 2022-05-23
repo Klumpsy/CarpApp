@@ -9,6 +9,7 @@ use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @extends ServiceEntityRepository<Vangst>
  *
@@ -62,7 +63,6 @@ class VangstRepository extends ServiceEntityRepository
             ;
     }
 
-
     public function findRecordFish()
     {
         return $this->createQueryBuilder('fish')
@@ -114,6 +114,16 @@ class VangstRepository extends ServiceEntityRepository
             ->addSelect('soort.name')
             ->andWhere('soort.name = :searchTerm')
             ->setParameter('searchTerm', $kind)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function orderByCaughtMonth($month)
+    {
+        return $this->createQueryBuilder('fish')
+            ->andWhere('MONTH(fish.datum) = :month')
+            ->setParameter(':month', $month)
             ->getQuery()
             ->getResult()
             ;

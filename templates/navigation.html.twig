@@ -17,15 +17,17 @@
         <div class="grid-x grid-padding-x grid-padding-y text-center align-middle" >
             <div class="cell small-12 medium-auto">
                 <ul class="dropdown vertical menu medium-horizontal nav " data-dropdown-menu >
-                    <li><a class="mainGreenColor navigation-background" href="{{ path('app_home') }}">Home</a></li>
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li>
-                        <a class='navigation-background mainGreenColor' href="#">Wateren</a>
-                        <ul class="menu" >
-                            <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren') }}">Wateren</a></li>
-                            <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren_ongewenst') }}">Wateren ongewenst</a></li>
-                        </ul>
+                        <a class="mainGreenColor navigation-background" href="{{ path('app_home') }}">Home</a>
                     </li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                   <li>
+                       <a class='navigation-background mainGreenColor' href="#">Wateren</a>
+                       <ul class="menu vertical">
+                           <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren') }}">Wateren</a></li>
+                           <li><a class="mainGreenColor navigation-background" href="{{ path('app_wateren_ongewenst') }}">Wateren ongewenst</a></li>
+                       </ul>
+                   </li>
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_vangsten') }}">Vangsten</a></li>
                     <li><a class="mainGreenColor navigation-background" href="{{ path('app_register') }}">Registreer</a></li>
                     {%  endif %}

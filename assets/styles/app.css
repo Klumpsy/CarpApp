@@ -17586,4 +17586,40 @@ h2 {
   }
 }
 
+.about-the-author {
+  background-color: #fefefe;
+  padding: 1rem;
+  border: 1px solid #cacaca;
+}
+.about-the-author .separator-left {
+  text-align: left;
+}
+.about-the-author .separator-left::before, .about-the-author .separator-left::after {
+  display: table;
+  content: " ";
+  flex-basis: 0;
+  order: 1;
+}
+.about-the-author .separator-left::after {
+  clear: both;
+}
+.about-the-author .separator-left::after {
+  position: relative;
+  width: 5rem;
+  border-bottom: 0.125rem solid #1779ba;
+  margin: 0.3rem auto 0;
+  margin-left: 0;
+}
+.about-the-author .author-title {
+  text-transform: uppercase;
+}
+.about-the-author .author-social {
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.about-the-author .author-social .author-image {
+  border: 1px solid #cacaca;
+}
+
 /*# sourceMappingURL=app.css.map */

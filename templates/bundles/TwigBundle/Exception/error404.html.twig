@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="about-the-author">
+        <h3 class="author-title">Oh nee!</h3>
+        <div class="grid-x">
+            <div class="cell small-12 medium-6">
+                <div class="author-image">
+                    <img src = {{ asset('build/images/carpp_error.jpg') }}>
+                </div>
+            </div>
+            <div class="cell small-12 medium-6 columns">
+                <h4 class="separator mainGreenColor">Deze pagina bestaat niet..</h4>
+                <p>Helaas deze pagina bestaat niet, heb je gekeken of de link klopt?</p>
+                <a class="button mainGreenBackground" href={{ path('app_home') }}>Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

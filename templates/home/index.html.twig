@@ -97,23 +97,21 @@
                            </p>
                         </div>
                      </div>
-
-                     <div class="product-feature-section-feature bottom-left">
-                        <i class="fa fa-fish spiegel-carp" aria-hidden="true"></i>
-                        <div>
-                           <p class="feature-title">Spiegelkarpers</p>
-                           <p class="feature-desc">{{ spiegelKarpers|length }}</p>
-                        </div>
-                     </div>
-
-                     <div class="product-feature-section-feature bottom-right">
-                        <i class="fa fa-fish schub-carp" aria-hidden="true"></i>
-                        <div>
-                           <p class="feature-title">Schubkarpers</p>
-                           <p class="feature-desc">{{ schubKarpers|length }}</p>
-                        </div>
-                     </div>
                   </div>
+               </div>
+            </section>
+            <section class="grid-x grid-padding-y">
+               <div class="cell text-center">
+                  <h3 class="graph_title">Vangsten per maand</h3>
+               </div>
+               <div class="cell text-center">
+                  {{ render_chart(vangstenChart) }}
+               </div>
+               <div class="cell text-center">
+                  <h3 class="graph_title">Soorten vangsten</h3>
+               </div>
+               <div class="cell">
+                  {{ render_chart(soortenChart) }}
                </div>
             </section>
         {% endif %}
