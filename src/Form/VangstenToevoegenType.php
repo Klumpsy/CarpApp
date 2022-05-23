@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Land;
 use App\Entity\Soort;
 use App\Entity\Vangst;
+use App\Entity\Visser;
 use App\Entity\Water;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,6 +29,10 @@ class VangstenToevoegenType extends AbstractType
             ->add('water', EntityType::class, [
                 'label' => 'Naam van het water',
                 'class' => Water::class
+            ])
+            ->add('visser', EntityType::class, [
+                'label' => 'Gevangen door',
+                'class' => Visser::class
             ])
             ->add('gewicht', NumberType::class, [
                 'label' => 'Gewicht in ponden'

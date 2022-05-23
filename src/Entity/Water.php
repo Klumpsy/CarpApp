@@ -15,10 +15,6 @@ class Water
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    public function __toString(){
-        return $this->name;
-    }
-
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
@@ -70,6 +66,10 @@ class Water
 
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $smallFish;
+
+    public function __toString(){
+        return $this->name;
+    }
 
     public function __construct()
     {

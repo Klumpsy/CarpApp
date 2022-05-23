@@ -21,28 +21,50 @@ class WaterTest extends TestCase
         $this->assertSame('Kanaal', $waterName);
     }
 
-    public function test_water_saves_BigFish_badge()
+    /**
+     * @dataProvider getSpecificationTestsBadges
+     */
+    public function test_it_saves_the_right_badges(bool $expectedBig, bool $expectedSmall, bool $expectedCrayfish, bool $expectedHard)
     {
-        $this->water->setBigFish(true);
-        $this->assertSame(true, $this->water->isBigFish());
+        $this->water->setBigFish($expectedBig);
+        $this->water->setSmallFish($expectedSmall);
+        $this->water->setKreeften($expectedCrayfish);
+        $this->water->setMoeilijk($expectedHard);
+
+        if ($expectedBig) {
+           $this->assertSame(true, $this->water->isBigFish());
+           $this->assertSame(false, $this->water->isMoeilijk());
+           $this->assertSame(false, $this->water->isKreeften());
+           $this->assertSame(false, $this->water->isSmallFish());
+        }
+        if ($expectedSmall) {
+            $this->assertSame(false, $this->water->isBigFish());
+            $this->assertSame(false, $this->water->isMoeilijk());
+            $this->assertSame(false, $this->water->isKreeften());
+            $this->assertSame(true, $this->water->isSmallFish());
+        }
+        if ($expectedCrayfish) {
+            $this->assertSame(false, $this->water->isBigFish());
+            $this->assertSame(false, $this->water->isMoeilijk());
+            $this->assertSame(true, $this->water->isKreeften());
+            $this->assertSame(false, $this->water->isSmallFish());
+        }
+        if ($expectedHard) {
+            $this->assertSame(false, $this->water->isBigFish());
+            $this->assertSame(true, $this->water->isMoeilijk());
+            $this->assertSame(false, $this->water->isKreeften());
+            $this->assertSame(false, $this->water->isSmallFish());
+        }
     }
 
-    public function test_water_saves_crayfish_badge()
+    public function getSpecificationTestsBadges(): array
     {
-        $this->water->setKreeften(true);
-        $this->assertSame(true, $this->water->isKreeften());
-    }
-
-    public function test_water_saves_small_fish_badge()
-    {
-        $this->water->setSmallFish(true);
-        $this->assertSame(true, $this->water->isSmallFish());
-    }
-
-    public function test_water_saves_hard_water()
-    {
-        $this->water->setMoeilijk(true);
-        $this->assertSame(true, $this->water->isMoeilijk());
+        return [
+            [false, false, false, true],
+            [false, false, true, false],
+            [false, true, false, false],
+            [true, false, false, false]
+        ];
     }
 
 }

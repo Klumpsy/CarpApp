@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Vangst;
-use App\Form\SearchFormType;
 use App\Form\VangstenToevoegenType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

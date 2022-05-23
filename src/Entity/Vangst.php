@@ -58,6 +58,9 @@ class Vangst
     #[ORM\Column(type: 'float', nullable: true)]
     private $windsnelheid;
 
+    #[ORM\ManyToOne(targetEntity: Visser::class, inversedBy: 'vangsten')]
+    private $visser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -227,6 +230,18 @@ class Vangst
     public function setWindsnelheid(?float $windsnelheid): self
     {
         $this->windsnelheid = $windsnelheid;
+
+        return $this;
+    }
+
+    public function getVisser(): ?Visser
+    {
+        return $this->visser;
+    }
+
+    public function setVisser(?Visser $visser): self
+    {
+        $this->visser = $visser;
 
         return $this;
     }
