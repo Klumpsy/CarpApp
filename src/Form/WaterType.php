@@ -28,6 +28,7 @@ class WaterType extends AbstractType
             ->add('land', EntityType::class, [
                 'class' => Land::class
             ])
+            ->add('type')
             ->add('nachtvissen')
             ->add('boot')
             ->add('voerboot')

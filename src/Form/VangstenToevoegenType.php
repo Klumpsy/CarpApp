@@ -67,24 +67,28 @@ class VangstenToevoegenType extends AbstractType
             ])
             ->add('graden', HiddenType::class, [
                 'attr' => [
+                    'mapped' => false,
                     'id' => 'weather-data-graden',
                     'value' => ''
                 ]
             ])
             ->add('windrichting', HiddenType::class, [
                 'attr' => [
+                    'mapped' => false,
                     'id' => 'weather-data-windrichting',
                     'value' => ''
                 ]
             ])
             ->add('windsnelheid', HiddenType::class, [
                 'attr' => [
+                    'mapped' => false,
                     'id' => 'weather-data-windsnelheid',
                     'value' => ''
                 ]
             ])
             ->add('luchtdruk', HiddenType::class, [
                 'attr' => [
+                    'mapped' => false,
                     'id' => 'weather-data-luchtdruk',
                     'value' => ''
                 ]
@@ -102,6 +106,8 @@ class VangstenToevoegenType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Vangst::class,
+            'allow_extra_fields' => true,
+            'csrf_protection' => false,
         ]);
     }
 }

@@ -74,33 +74,24 @@ class VangstenController extends AbstractController
         ]);
     }
 
-    #[Route('/vangst/aanpassen/{id}', name: 'app_vangst_aanpassen')]
+    #[Route('/vangst/aanpassen/{id}', name: 'app_vangst_aanpassen', methods: 'POST')]
     public function edit($id, ManagerRegistry $doctrine, Request $request): Response
     {
         $vangst = $doctrine->getRepository(Vangst::class)->findWithWaterJoin($id);
         $vangstForm = $this->createForm(VangstenToevoegenType::class, $vangst);
         $vangstForm->handleRequest($request);
 
+
+        $vangstForm->submit($request->request->all(), false);
+
         if ($vangstForm->isSubmitted() && $vangstForm->isValid()) {
             $em = $doctrine->getManager();
-
-            $image = $request->files->get('vangsten_toevoegen')['foto'];
-
-            if ($image) {
-                $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
-                $image->move(
-                    $this->getParameter('fotos_folder'),
-                    $imageName
-                );
-                $vangst->setImage($imageName);
-            }
-
             $em->persist($vangst);
-            $em->flush();
+                    $em->flush();
 
-            $this->addFlash('vangst_message', "Vangst is aangepast!");
-            return $this->redirect($this->generateUrl('app_vangsten'));
-        }
+                    $this->addFlash('vangst_message', "Vangst is aangepast!");
+                    return $this->redirect($this->generateUrl('app_vangsten'));
+                }
 
         return $this->renderForm('vangsten/pas_vangst_aan.html.twig', [
             'aanpas_form' => $vangstForm,
