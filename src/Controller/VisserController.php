@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Visser;
 use App\Form\VisserType;
+use App\Repository\VisserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,10 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class VisserController extends AbstractController
 {
     #[Route('/vissers', name: 'app_visser')]
-    public function index(): Response
+    public function index(VisserRepository $vissers): Response
     {
+        $vissers = $vissers->findAll();
+
         return $this->render('visser/index.html.twig', [
-            'controller_name' => 'VisserController',
+            'vissers' => $vissers,
+        ]);
+    }
+
+    #[Route('/visser/single/{id}', name: 'app_visser_single')]
+    public function single($id, ManagerRegistry $doctrine, Request $request): Response
+    {
+        $singleVisser = $doctrine->getRepository(Visser::class)->findWithVangstenJoin($id);
+
+        return $this->render('visser/single_visser.html.twig', [
+            'visser' => $singleVisser,
         ]);
     }
 

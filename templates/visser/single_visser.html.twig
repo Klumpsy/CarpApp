@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carpp Visser{% endblock %}
+
+{% block body %}
+    <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell">
+            <a class="button float-left mainGreenBackground " href="{{ path('app_visser') }}">Terug</a>
+        </div>
+    </div>
+    <div class="row expanded collapse">
+        <div class="column">
+            <div class="large-article-header">
+                <div class="large-article-header-content">
+                    <div class="center-container">
+                        <div class="article-date">
+                            <p>Carpp</p>
+                        </div>
+                        <div class="article-title">
+                            <h1>Statestieken van {{ visser.name }}</h1>
+                        </div>
+                        <div class="article-details">
+                            <div class="article-comments">
+                                <a href="#"><i class="fa fa-comment" aria-hidden="true"></i> 3 Comments</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fullscreen-image-slider">
+        <div class="orbit" role="region" aria-label="FullScreen Pictures" data-orbit>
+            <ul class="orbit-container">
+                <button class="orbit-previous">
+                    <span class="show-for-sr">Previous Slide</span>
+                    <span class="nav fa fa-chevron-left fa-3x"></span>
+                </button>
+                <button class="orbit-next">
+                    <span class="show-for-sr">Next Slide</span>
+                    <span class="nav fa fa-chevron-right fa-3x"></span>
+                </button>
+                {% for vangst in visser.vangsten %}
+                    <li class="is-active orbit-slide">
+                        <img src="{{asset('fotos/' ~ vangst.image)}}" alt={{ visser.name }}>
+                        <figcaption class="orbit-caption">
+                            <h1>{{ vangst.gewicht}}</h1>
+                        </figcaption>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+
+{% endblock %}

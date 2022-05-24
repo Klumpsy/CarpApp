@@ -17622,4 +17622,86 @@ h2 {
   border: 1px solid #cacaca;
 }
 
+/* Individual visser page */
+.large-article-header {
+  background: url("https://unsplash.it/1024/500/?blur") no-repeat center;
+  background-size: cover;
+  height: 31.25rem;
+  position: relative;
+}
+@media print, screen and (max-width: 39.99875em) {
+  .large-article-header {
+    height: 20.8333333333rem;
+  }
+}
+
+.large-article-header-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 3.125rem;
+  left: 0;
+  right: 0;
+}
+@media print, screen and (max-width: 39.99875em) {
+  .large-article-header-content {
+    bottom: 1.25rem;
+  }
+}
+.large-article-header-content .center-container {
+  width: 50%;
+  margin: 0 auto;
+}
+@media print, screen and (max-width: 39.99875em) {
+  .large-article-header-content .center-container {
+    width: 100%;
+    padding: 0 1.25rem;
+  }
+}
+.large-article-header-content .article-date {
+  color: #fefefe;
+}
+.large-article-header-content .article-title h1 {
+  line-height: 3.125rem;
+  color: #fefefe;
+  font-weight: 600;
+}
+@media print, screen and (max-width: 39.99875em) {
+  .large-article-header-content .article-title h1 {
+    line-height: 1.875rem;
+  }
+}
+.large-article-header-content .article-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.large-article-header-content .article-details a {
+  color: #fefefe;
+}
+.large-article-header-content .article-author {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+.large-article-header-content .article-author img {
+  border-radius: 3.125rem;
+}
+.large-article-header-content .article-author a {
+  margin-left: 1rem;
+}
+
+.fullscreen-image-slider .orbit-image {
+  width: 100%;
+  max-height: 600px;
+}
+.fullscreen-image-slider .orbit-caption {
+  bottom: 50%;
+  transform: translateY(50%);
+  background: none;
+  text-align: center;
+  color: #fefefe;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=app.css.map */

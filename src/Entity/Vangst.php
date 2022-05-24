@@ -20,7 +20,7 @@ class Vangst
     #[ORM\JoinColumn(nullable: false)]
     private $soort;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $diepte;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

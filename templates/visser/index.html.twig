@@ -8,4 +8,23 @@
             <a class="button float-right mainGreenBackground " href="{{ path('app_visser_toevoegen') }}"><i class="fa-solid fa-plus"></i> Visser</a>
         </div>
     </div>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x grid-padding-y align-center">
+            {% for visser in vissers %}
+                <div class="cell small-10 medium-6 large-4">
+                    <div class="responsive-blog-post">
+                        <div class="individual-post">
+                            <div class="grid-x">
+                                <div class="cell auto">
+                                    <h4 class="float-left">{{ visser.name }}</h4>
+                                </div>
+                            </div>
+                            <img src="{{asset('fotos/' ~ visser.image)}}" alt={{ visser.name }}>
+                            <a href="{{ path('app_visser_single',{id: visser.id}) }}" class="button mainGreenBackground expanded">Statestieken van {{ visser.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

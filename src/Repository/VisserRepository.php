@@ -39,6 +39,18 @@ class VisserRepository extends ServiceEntityRepository
         }
     }
 
+    public function findWithVangstenJoin($id)
+    {
+        return $this->createQueryBuilder('fisherman')
+            ->andWhere('fisherman.id = :id')
+            ->leftJoin('fisherman.vangsten', 'vangsten')
+            ->addSelect('vangsten')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
 //    /**
 //     * @return Visser[] Returns an array of Visser objects
 //     */
