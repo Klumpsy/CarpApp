@@ -35,6 +35,11 @@
               {% if not water.ongewenst %}
           <div class="cell small-12 medium-6 large-4">
                   <div class="card-user-profile">
+                      {% if water.visserFavorite|length > 0 %}
+                          {% for visser in water.visserFavorite %}
+                              <i class="fa-solid fa-star star-favorite-marker"></i>
+                          {% endfor %}
+                      {% endif %}
                       <span class="catch_counter"><i class="fa-solid fa-fish-fins"></i> {{ water.vangsten|length}}</span>
                       {% if water.bigfish %}
                           <span class="badge catch_bigFish"><i class="fa-solid fa-medal"></i> </span>

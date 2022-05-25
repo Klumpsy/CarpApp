@@ -67,6 +67,9 @@ class Water
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $smallFish;
 
+    #[ORM\OneToMany(mappedBy: 'favoriteWater', targetEntity: Visser::class)]
+    private $visserFavorite;
+
     public function __toString(){
         return $this->name;
     }
@@ -74,6 +77,7 @@ class Water
     public function __construct()
     {
         $this->vangsten = new ArrayCollection();
+        $this->visserFavorite = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -302,4 +306,35 @@ class Water
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Visser>
+     */
+    public function getVisserFavorite(): Collection
+    {
+        return $this->visserFavorite;
+    }
+
+    public function addVisserFavorite(Visser $visserFavorite): self
+    {
+        if (!$this->visserFavorite->contains($visserFavorite)) {
+            $this->visserFavorite[] = $visserFavorite;
+            $visserFavorite->setFavoriteWater($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisserFavorite(Visser $visserFavorite): self
+    {
+        if ($this->visserFavorite->removeElement($visserFavorite)) {
+            // set the owning side to null (unless already changed)
+            if ($visserFavorite->getFavoriteWater() === $this) {
+                $visserFavorite->setFavoriteWater(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

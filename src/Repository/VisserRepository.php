@@ -51,6 +51,22 @@ class VisserRepository extends ServiceEntityRepository
             ;
     }
 
+    public function orderByKind($kind, $name)
+    {
+        return $this->createQueryBuilder('visser')
+            ->addSelect('visser.name')
+            ->andWhere('visser.name = :name')
+            ->setParameter('name', $name)
+            ->leftJoin('visser.vangsten', 'vangsten')
+            ->addSelect('vangsten')
+            ->leftJoin('vangsten.soort', 'vangst')
+            ->andWhere('vangst.name = :searchTerm')
+            ->setParameter('searchTerm', $kind)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return Visser[] Returns an array of Visser objects
 //     */

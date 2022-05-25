@@ -24,8 +24,6 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   }
 }
 
-
-
 /* Image slider */
 .product-image-gallery {
   background-color: rgba(23, 37, 22, 0.62);
@@ -255,7 +253,7 @@ $card-user-profile-text-color: $body-font-color;
   border-radius: 20px !important;
   @include card-container($card-user-profile-bg, $card-user-profile-text-color, 1rem, $global-radius);
 
-  .catch_bigFish, .catch_hardWater, .catch_LotsOfFish, .catch_counter, .catch_lobster {
+  .catch_bigFish, .catch_hardWater, .catch_LotsOfFish, .catch_counter, .catch_lobster, .star-favorite-marker {
     position: absolute;
     z-index: 1000;
     font-size: 15px;
@@ -269,6 +267,13 @@ $card-user-profile-text-color: $body-font-color;
 
   .catch_bigFish, .catch_hardWater, .catch_LotsOfFish, .catch_lobster {
     font-size: 20px;
+  }
+
+  .star-favorite-marker {
+    left: 5px;
+    top: 5px;
+    font-size: 15px;
+    color: yellow;
   }
 
   .catch_counter {
@@ -501,15 +506,15 @@ $about-the-author-separator-thickness: 0.125rem;
 
 /* Individual visser page */
 
-$large-article-header-bg: url('https://unsplash.it/1024/500/?blur');
 $large-article-header-color: $white;
 $large-article-header-height: rem-calc(500);
 
 .large-article-header {
-  background: $large-article-header-bg no-repeat center;
+  background: no-repeat center;
   background-size: cover;
   height: $large-article-header-height;
   position: relative;
+  margin-bottom: 3rem;
 
   @include breakpoint(small only) {
     height: ($large-article-header-height / 1.5);
@@ -529,8 +534,12 @@ $large-article-header-height: rem-calc(500);
   }
 
   .center-container {
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     margin: 0 auto;
+    background-color: rgba(0,0,0,0.6);
 
     @include breakpoint(small only) {
       width: 100%;
@@ -538,19 +547,22 @@ $large-article-header-height: rem-calc(500);
     }
   }
 
-  .article-date {
-    color: $large-article-header-color;
-  }
   .article-title {
     h1 {
       line-height: rem-calc(50);
       color: $large-article-header-color;
       font-weight: 600;
+      margin-top: 10px;
 
       @include breakpoint(small only) {
         line-height: rem-calc(30);
       }
     }
+  }
+
+  .favorite-water {
+    color: white;
+    font-weight: 600;
   }
   .article-details {
     display: flex;
@@ -574,19 +586,39 @@ $large-article-header-height: rem-calc(500);
   }
 }
 
+.vangsten-titel-individual {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .fullscreen-image-slider {
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+
   .orbit-image {
     width: 100%;
     max-height: 600px;
   }
 
   .orbit-caption {
-    bottom: 50%;
-    transform: translateY(50%);
-    background: none;
+    position: absolute;
+    top: 10px;
+    height: 50px;
+    display:flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    width: 100%;
+    background-color: black;
     text-align: center;
     color: $white;
     font-weight: bold;
+    @media (max-width: 768px) {
+      p {
+        font-size: .8rem;
+      }
+      height: 30px;
+    }
   }
 }
 

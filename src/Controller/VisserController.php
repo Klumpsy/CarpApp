@@ -10,6 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class VisserController extends AbstractController
 {
@@ -24,12 +26,40 @@ class VisserController extends AbstractController
     }
 
     #[Route('/visser/single/{id}', name: 'app_visser_single')]
-    public function single($id, ManagerRegistry $doctrine, Request $request): Response
+    public function single($id, ManagerRegistry $doctrine, Request $request, ChartBuilderInterface $chartBuilder): Response
     {
         $singleVisser = $doctrine->getRepository(Visser::class)->findWithVangstenJoin($id);
 
+        $soortenChart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+        $soortenChart->setData([
+            'labels' => ['Spiegel', 'Schub'],
+            'datasets' => [
+                [
+                    'backgroundColor' => [
+                        '#756e43',
+                        '#4a4529'
+                    ],
+                    'borderColor' => 'white',
+                    'data' => [
+                        count($doctrine->getRepository(Visser::class)->orderByKind('spiegelkarper', $singleVisser->getName())),
+                        count($doctrine->getRepository(Visser::class)->orderByKind('schubkarper', $singleVisser->getName())),
+                    ],
+                ],
+            ],
+        ]);
+        $soortenChart->setOptions([
+            'plugins' => [
+                'legend' => [
+                    'labels' => [
+                        'color' => 'white'
+                    ]
+                ]
+            ],
+        ]);
+
         return $this->render('visser/single_visser.html.twig', [
             'visser' => $singleVisser,
+            'soortenChart' => $soortenChart
         ]);
     }
 
@@ -64,6 +94,40 @@ class VisserController extends AbstractController
 
         return $this->renderForm('visser/voeg_visser_toe.html.twig', [
             'visser_form' => $visserForm
+        ]);
+    }
+    #[Route('/visser/aanpassen/{id}', name: 'app_visser_aanpassen')]
+    public function aanpassen($id, ManagerRegistry $doctrine, Request $request): Response
+    {
+        $visser = $doctrine->getRepository(Visser::class)->findWithVangstenJoin($id);
+        $visserAanpasForm = $this->createForm(VisserType::class, $visser);
+        $visserAanpasForm->handleRequest($request);
+
+        if ($visserAanpasForm->isSubmitted() && $visserAanpasForm->isValid()) {
+
+            $em = $doctrine->getManager();
+
+            $image = $request->files->get('visser')['foto'];
+
+            if ($image) {
+                $imageName = md5(uniqid()). '.' . $image->guessClientExtension();
+                $image->move(
+                    $this->getParameter('fotos_folder'),
+                    $imageName
+                );
+                $visser->setImage($imageName);
+            }
+
+            $em->persist($visser);
+            $em->flush();
+
+            $this->addFlash('visser_message', "Visser is aangepast!");
+            return $this->redirect($this->generateUrl('app_visser'));
+        }
+
+        return $this->renderForm('visser/pas_visser_aan.html.twig', [
+            'visser_aanpas_form' => $visserAanpasForm,
+            'visser' => $visser
         ]);
     }
 }

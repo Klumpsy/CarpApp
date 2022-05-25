@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}Pas water aan{% endblock %}
+{% block body %}
+    <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="cell">
+            <a class="button float-left mainGreenBackground " href="{{ path('app_visser') }}">Terug</a>
+        </div>
+    </div>
+    <div class ="grid-x align-center">
+        <div class="cell large-6 medium-8 small-10">
+            {{ form(visser_aanpas_form) }}
+        </div>
+    </div>
+{% endblock %}

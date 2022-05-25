@@ -17395,7 +17395,7 @@ h2 {
 .card-user-profile > :last-child {
   margin-bottom: 0;
 }
-.card-user-profile .catch_bigFish, .card-user-profile .catch_hardWater, .card-user-profile .catch_LotsOfFish, .card-user-profile .catch_counter, .card-user-profile .catch_lobster {
+.card-user-profile .catch_bigFish, .card-user-profile .catch_hardWater, .card-user-profile .catch_LotsOfFish, .card-user-profile .catch_counter, .card-user-profile .catch_lobster, .card-user-profile .star-favorite-marker {
   position: absolute;
   z-index: 1000;
   font-size: 15px;
@@ -17408,6 +17408,12 @@ h2 {
 }
 .card-user-profile .catch_bigFish, .card-user-profile .catch_hardWater, .card-user-profile .catch_LotsOfFish, .card-user-profile .catch_lobster {
   font-size: 20px;
+}
+.card-user-profile .star-favorite-marker {
+  left: 5px;
+  top: 5px;
+  font-size: 15px;
+  color: yellow;
 }
 .card-user-profile .catch_counter {
   top: 0;
@@ -17624,10 +17630,11 @@ h2 {
 
 /* Individual visser page */
 .large-article-header {
-  background: url("https://unsplash.it/1024/500/?blur") no-repeat center;
+  background: no-repeat center;
   background-size: cover;
   height: 31.25rem;
   position: relative;
+  margin-bottom: 3rem;
 }
 @media print, screen and (max-width: 39.99875em) {
   .large-article-header {
@@ -17649,8 +17656,12 @@ h2 {
   }
 }
 .large-article-header-content .center-container {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 @media print, screen and (max-width: 39.99875em) {
   .large-article-header-content .center-container {
@@ -17658,18 +17669,20 @@ h2 {
     padding: 0 1.25rem;
   }
 }
-.large-article-header-content .article-date {
-  color: #fefefe;
-}
 .large-article-header-content .article-title h1 {
   line-height: 3.125rem;
   color: #fefefe;
   font-weight: 600;
+  margin-top: 10px;
 }
 @media print, screen and (max-width: 39.99875em) {
   .large-article-header-content .article-title h1 {
     line-height: 1.875rem;
   }
+}
+.large-article-header-content .favorite-water {
+  color: white;
+  font-weight: 600;
 }
 .large-article-header-content .article-details {
   display: flex;
@@ -17691,17 +17704,40 @@ h2 {
   margin-left: 1rem;
 }
 
+.vangsten-titel-individual {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.fullscreen-image-slider {
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
+}
 .fullscreen-image-slider .orbit-image {
   width: 100%;
   max-height: 600px;
 }
 .fullscreen-image-slider .orbit-caption {
-  bottom: 50%;
-  transform: translateY(50%);
-  background: none;
+  position: absolute;
+  top: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
+  width: 100%;
+  background-color: black;
   text-align: center;
   color: #fefefe;
   font-weight: bold;
+}
+@media (max-width: 768px) {
+  .fullscreen-image-slider .orbit-caption {
+    height: 30px;
+  }
+  .fullscreen-image-slider .orbit-caption p {
+    font-size: 0.8rem;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

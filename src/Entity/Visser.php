@@ -24,6 +24,9 @@ class Visser
     #[ORM\OneToMany(mappedBy: 'visser', targetEntity: Vangst::class)]
     private $vangsten;
 
+    #[ORM\ManyToOne(targetEntity: Water::class, inversedBy: 'visserFavorite')]
+    private $favoriteWater;
+
     public function __construct()
     {
         $this->vangsten = new ArrayCollection();
@@ -91,4 +94,17 @@ class Visser
 
         return $this;
     }
+
+    public function getFavoriteWater(): ?Water
+    {
+        return $this->favoriteWater;
+    }
+
+    public function setFavoriteWater(?Water $favoriteWater): self
+    {
+        $this->favoriteWater = $favoriteWater;
+
+        return $this;
+    }
+
 }

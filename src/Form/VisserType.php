@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Visser;
+use App\Entity\Water;
+use Doctrine\DBAL\Types\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -25,6 +28,10 @@ class VisserType extends AbstractType
                         'maxSizeMessage' => 'Te groot bestand, maximale grootte: ({{ limit }} {{ suffix }})'
                     ])
                 ]
+            ])
+            ->add('favoriteWater', EntityType::class, [
+                'label' => 'favoriete water',
+                'class' => Water::class
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Voeg visser toe'
