@@ -69,7 +69,7 @@
         "version": "1.2.3"
     },
     "doctrine/migrations": {
-        "version": "3.5.0"
+        "version": "3.5.1"
     },
     "doctrine/orm": {
         "version": "2.12.1"
