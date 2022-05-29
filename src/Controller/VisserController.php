@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Visser;
 use App\Form\VisserType;
 use App\Repository\VisserRepository;
+use App\Service\Charthelper;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,36 +27,11 @@ class VisserController extends AbstractController
     }
 
     #[Route('/visser/single/{id}', name: 'app_visser_single')]
-    public function single($id, ManagerRegistry $doctrine, Request $request, ChartBuilderInterface $chartBuilder): Response
+    public function single($id, ManagerRegistry $doctrine, Request $request, Charthelper $charthelper): Response
     {
         $singleVisser = $doctrine->getRepository(Visser::class)->findWithVangstenJoin($id);
 
-        $soortenChart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
-        $soortenChart->setData([
-            'labels' => ['Spiegel', 'Schub'],
-            'datasets' => [
-                [
-                    'backgroundColor' => [
-                        '#756e43',
-                        '#4a4529'
-                    ],
-                    'borderColor' => 'white',
-                    'data' => [
-                        count($doctrine->getRepository(Visser::class)->orderByKind('spiegelkarper', $singleVisser->getName())),
-                        count($doctrine->getRepository(Visser::class)->orderByKind('schubkarper', $singleVisser->getName())),
-                    ],
-                ],
-            ],
-        ]);
-        $soortenChart->setOptions([
-            'plugins' => [
-                'legend' => [
-                    'labels' => [
-                        'color' => 'white'
-                    ]
-                ]
-            ],
-        ]);
+        $soortenChart = $charthelper->getCarpSpeciesSingleFishermanChart($singleVisser);
 
         return $this->render('visser/single_visser.html.twig', [
             'visser' => $singleVisser,
