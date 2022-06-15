@@ -107,6 +107,9 @@ class Charthelper
 
     public function getCarpSpeciesSingleFishermanChart($singleVisser)
     {
+
+        dump($this->visserRepository->orderByKind('schubkarper', $singleVisser->getName()));die;
+
         $soortenChartSingleFisherman = $this->chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
         $soortenChartSingleFisherman->setData([
             'labels' => ['Spiegel', 'Schub'],

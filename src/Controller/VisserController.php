@@ -27,7 +27,7 @@ class VisserController extends AbstractController
     }
 
     #[Route('/visser/single/{id}', name: 'app_visser_single')]
-    public function single($id, ManagerRegistry $doctrine, Request $request, Charthelper $charthelper): Response
+    public function single($id, ManagerRegistry $doctrine, Charthelper $charthelper): Response
     {
         $singleVisser = $doctrine->getRepository(Visser::class)->findWithVangstenJoin($id);
 

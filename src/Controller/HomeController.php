@@ -8,6 +8,8 @@ use App\Service\Charthelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class HomeController extends AbstractController
 {
@@ -21,6 +23,7 @@ class HomeController extends AbstractController
         $smallestFish = $vangstRepository->findSmallestFish();
 
         $vangstenChart = $charthelper->getMontlyCatchrateChart();
+
         $soortenChart = $charthelper->getCarpSpeciesChart();
 
         return $this->render('home/index.html.twig', [
