@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Visser;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\expr;
 
 /**
  * @extends ServiceEntityRepository<Visser>
@@ -51,21 +52,7 @@ class VisserRepository extends ServiceEntityRepository
             ;
     }
 
-    public function orderByKind($kind, $name)
-    {
-        return $this->createQueryBuilder('visser')
-            ->andWhere('visser.name = :name')
-            ->setParameter('name', $name)
-            ->leftJoin('visser.vangsten','vangsten')
-            ->addSelect('vangsten')
-            ->leftJoin('vangsten.soort', 'vangst')
-            ->addSelect('vangst')
-            ->andWhere('vangst.name = :searchTerm')
-            ->setParameter('searchTerm', $kind)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
+
 
 //    /**
 //     * @return Visser[] Returns an array of Visser objects

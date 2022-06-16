@@ -23,8 +23,8 @@ class HomeController extends AbstractController
         $smallestFish = $vangstRepository->findSmallestFish();
 
         $vangstenChart = $charthelper->getMontlyCatchrateChart();
-
         $soortenChart = $charthelper->getCarpSpeciesChart();
+        $gewichtenChart = $charthelper->getFishWeightChart();
 
         return $this->render('home/index.html.twig', [
             'vangstFotos' => $totaalVangsten,
@@ -33,7 +33,8 @@ class HomeController extends AbstractController
             'smallestFish' => $smallestFish,
 
             'vangstenChart' => $vangstenChart,
-            'soortenChart' => $soortenChart
+            'soortenChart' => $soortenChart,
+            'gewichtenChart' => $gewichtenChart
         ]);
     }
 }

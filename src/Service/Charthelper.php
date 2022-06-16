@@ -13,13 +13,11 @@ class Charthelper
 
     private $chartBuilder;
     private $vangstRepository;
-    private $visserRepository;
 
-    public function __construct(ChartBuilderInterface $chartBuilder, VangstRepository $vangstRepository, VisserRepository $visserRepository)
+    public function __construct(ChartBuilderInterface $chartBuilder, VangstRepository $vangstRepository)
     {
         $this->vangstRepository = $vangstRepository;
         $this->chartBuilder = $chartBuilder;
-        $this->visserRepository = $visserRepository;
     }
     public function getMontlyCatchrateChart()
     {
@@ -108,8 +106,6 @@ class Charthelper
     public function getCarpSpeciesSingleFishermanChart($singleVisser)
     {
 
-        dump($this->visserRepository->orderByKind('schubkarper', $singleVisser->getName()));die;
-
         $soortenChartSingleFisherman = $this->chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
         $soortenChartSingleFisherman->setData([
             'labels' => ['Spiegel', 'Schub'],
@@ -121,8 +117,8 @@ class Charthelper
                     ],
                     'borderColor' => 'white',
                     'data' => [
-                        count($this->visserRepository->orderByKind('spiegelkarper', $singleVisser->getName())),
-                        count($this->visserRepository->orderByKind('schubkarper', $singleVisser->getName())),
+                        count($this->vangstRepository->orderByKindFisher('schubkarper', $singleVisser->getName())),
+                        count($this->vangstRepository->orderByKindFisher('spiegelkarper', $singleVisser->getName())),
                     ],
                 ],
             ],
@@ -137,5 +133,34 @@ class Charthelper
             ],
         ]);
         return $soortenChartSingleFisherman;
+    }
+
+    public function getFishWeightChart() {
+        $fishWeightChart = $this->chartBuilder->createChart(Chart::TYPE_BUBBLE);
+        $fishWeightChart->setData([
+            'labels' => 'Gewichten',
+            'datasets' => [
+                [
+                    'label' => 'Gewichten',
+                    'borderColor' => 'rgb(255, 255, 255)',
+                    'data' => [
+                        'x' => 12,
+                        'y' => 0,
+                        'r' => 15
+                    ],
+                    'backgroundColor' => 'rgb(255, 99, 132)'
+                ],
+            ],
+        ]);
+        $fishWeightChart->setOptions([
+            'plugins' => [
+                'legend' => [
+                    'labels' => [
+                        'color' => 'white'
+                    ]
+                ]
+            ],
+        ]);
+        return $fishWeightChart;
     }
 }

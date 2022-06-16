@@ -104,7 +104,7 @@
                <div class="cell text-center">
                   <h3 class="graph_title">Vangsten per maand</h3>
                </div>
-               <div class="cell text-center">
+               <div class="cell small-12 medium-8">
                   {{ render_chart(vangstenChart) }}
                </div>
                <div class="cell text-center">
@@ -112,6 +112,12 @@
                </div>
                <div class="cell small-12 medium-6">
                   {{ render_chart(soortenChart) }}
+               </div>
+               <div class="cell text-center">
+                  <h3 class="graph_title">Gewichten overzicht</h3>
+               </div>
+               <div class="cell small-12 medium-8">
+                  {{ render_chart(gewichtenChart) }}
                </div>
             </section>
         {% endif %}
