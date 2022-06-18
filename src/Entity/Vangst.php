@@ -21,7 +21,7 @@ class Vangst
     private $soort;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $diepte;
+    private $diepte = 0;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
