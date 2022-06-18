@@ -92,6 +92,32 @@ class VangstRepository extends ServiceEntityRepository
             ;
     }
 
+    public function orderByGivenWeight($weight, $weightTwo)
+    {
+        return $this->createQueryBuilder('fish')
+            ->andWhere('fish.gewicht BETWEEN :param AND :param2')
+            ->setParameter('param', $weight)
+            ->setParameter('param2', $weightTwo)
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    public function orderByGivenWeightFisher($name, $weight, $weightTwo)
+    {
+        return $this->createQueryBuilder('fish')
+            ->leftJoin('fish.visser', 'visser')
+            ->addSelect('visser')
+            ->andWhere('visser.name = :name')
+            ->setParameter('name', $name)
+            ->andWhere('fish.gewicht BETWEEN :param AND :param2')
+            ->setParameter('param', $weight)
+            ->setParameter('param2', $weightTwo)
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
     public function search($term)
     {
         return $this->createQueryBuilder('fish')

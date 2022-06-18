@@ -136,22 +136,83 @@ class Charthelper
     }
 
     public function getFishWeightChart() {
-        $fishWeightChart = $this->chartBuilder->createChart(Chart::TYPE_BUBBLE);
+
+           $arrayData = [
+               count($this->vangstRepository->orderByGivenWeight(0, 19.9)),
+               count($this->vangstRepository->orderByGivenWeight(20, 24.9)),
+               count($this->vangstRepository->orderByGivenWeight(25, 29.9)),
+               count($this->vangstRepository->orderByGivenWeight(30, 34.9)),
+               count($this->vangstRepository->orderByGivenWeight(35, 40)),
+           ];
+
+        $fishWeightChart = $this->chartBuilder->createChart(Chart::TYPE_POLAR_AREA);
         $fishWeightChart->setData([
-            'labels' => 'Gewichten',
+            'labels' => [
+                '0-20',
+                '20-25',
+                '25-30',
+                '30-35',
+                '35-40'
+        ],
             'datasets' => [
                 [
                     'label' => 'Gewichten',
                     'borderColor' => 'rgb(255, 255, 255)',
-                    'data' => [
-                        'x' => 12,
-                        'y' => 0,
-                        'r' => 15
+                    'data' => $arrayData,
+                    'backgroundColor' => [
+                        '#94d186',
+                        '#70a364',
+                        '#4d7544',
+                        '#4d7544',
+                        '#264021'
                     ],
-                    'backgroundColor' => 'rgb(255, 99, 132)'
-                ],
+                ]
+        ]]);
+        $fishWeightChart->setOptions([
+            'plugins' => [
+                'legend' => [
+                    'labels' => [
+                        'color' => 'white'
+                    ]
+                ]
             ],
         ]);
+        return $fishWeightChart;
+    }
+
+    public function getCarpWeightSingleFishermanChart($name) {
+
+        $arrayData = [
+            count($this->vangstRepository->orderByGivenWeightFisher($name->getname(),0, 19.9)),
+            count($this->vangstRepository->orderByGivenWeightFisher($name->getname(),20, 24.9)),
+            count($this->vangstRepository->orderByGivenWeightFisher($name->getname(),25, 29.9)),
+            count($this->vangstRepository->orderByGivenWeightFisher($name->getname(),30, 34.9)),
+            count($this->vangstRepository->orderByGivenWeightFisher($name->getname(),35, 40)),
+         ];
+
+        $fishWeightChart = $this->chartBuilder->createChart(Chart::TYPE_POLAR_AREA);
+        $fishWeightChart->setData([
+            'labels' => [
+                '0-20',
+                '20-25',
+                '25-30',
+                '30-35',
+                '35-40'
+            ],
+            'datasets' => [
+                [
+                    'label' => 'Gewichten',
+                    'borderColor' => 'rgb(255, 255, 255)',
+                    'data' => $arrayData,
+                    'backgroundColor' => [
+                        '#94d186',
+                        '#70a364',
+                        '#4d7544',
+                        '#4d7544',
+                        '#264021'
+                    ],
+                ]
+            ]]);
         $fishWeightChart->setOptions([
             'plugins' => [
                 'legend' => [

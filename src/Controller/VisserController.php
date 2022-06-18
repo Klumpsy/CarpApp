@@ -32,10 +32,12 @@ class VisserController extends AbstractController
         $singleVisser = $doctrine->getRepository(Visser::class)->findWithVangstenJoin($id);
 
         $soortenChart = $charthelper->getCarpSpeciesSingleFishermanChart($singleVisser);
+        $gewichtenChart = $charthelper->getCarpWeightSingleFishermanChart($singleVisser);
 
         return $this->render('visser/single_visser.html.twig', [
             'visser' => $singleVisser,
-            'soortenChart' => $soortenChart
+            'soortenChart' => $soortenChart,
+            'gewichtenChart' => $gewichtenChart
         ]);
     }
 
