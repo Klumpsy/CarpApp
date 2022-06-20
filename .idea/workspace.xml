@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a46bdd8a-d1f4-44d2-bf3e-704fc400b27b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20220618164909.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Entity/VangstTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Entity/WaterTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vangsten/single_vangst.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vangsten/single_vangst.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/wateren/single_water.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wateren/single_water.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
