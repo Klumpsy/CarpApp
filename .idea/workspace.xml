@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a46bdd8a-d1f4-44d2-bf3e-704fc400b27b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20220618164909.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Vangst.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Vangst.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/vangsten/single_vangst.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vangsten/single_vangst.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/wateren/single_water.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wateren/single_water.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +196,8 @@
       <workItem from="1654807855166" duration="252000" />
       <workItem from="1655316075682" duration="3693000" />
       <workItem from="1655397731324" duration="8135000" />
-      <workItem from="1655556089568" duration="9892000" />
+      <workItem from="1655556089568" duration="11043000" />
+      <workItem from="1655742846367" duration="364000" />
     </task>
     <servers />
   </component>
